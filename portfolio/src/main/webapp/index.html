@@ -4,43 +4,96 @@
     <meta charset="UTF-8">
     <title>Sami's Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
     <script src="script.js"></script>
   </head>
   <body>
     <div id="content">
 
-        <div id="landing-page">
+        <div class="landing-section">
             <img id="tri" src="tri.png"/>
             <h1 id="title">Sami Hossain</h1>
-            <div id="social-links">
-                <img src="github.svg" />
-                <img src="linkedin.svg" />
+            <div class="social-links">
+                <a href="https://github.com/Arboghast" target="_blank">
+                    <img src="github.svg" />
+                </a>
+                <a href="https://www.linkedin.com/in/sami-hossain/" target="_blank">
+                    <img src="linkedin.svg" />
+                </a>
             </div>
             <p id="biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam molestie metus turpis. Pellentesque efficitur porta nunc, 
             non posuere tellus condimentum dignissim. Vestibulum facilisis urna ac est sodales, ut molestie diam tristique. Donec quis 
             mauris a eros consectetur fermentum a vitae justo. </p>
         </div>
       
+        <div class="transition-bar"></div>
+
         <div id="project-page">
-          <h1 id="p-title">Projects</h1>
-          
-          <ul id = "projects">
-            <li> Halite.io </li>
-            <li> Truly Vote </li>
-            <li> MeetUp </li>
-            <li> Escape Room </li>
-          </ul>
-        </div>
+            <h2 class="subtitle">Projects</h2>
+                
+            <div class="train-bar"></div>
+            <div id="MeetUp" class="proj">
+                <div class="proj-intro">
+                    <h3>MeetUp</h3>
+                </div>
+                <div class="verticle-bar"></div>
+                <div class="proj-description">
+                    <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed sodales mauris ac velit efficitur, ut aliquet justo vulputate.
+                    Vivamus sit amet leo nibh. Nulla aliquet, justo non tristique volutpat, arcu risus blandit turpis, quis molestie odio sapien eu eros. 
+                    Pellentesque vestibulum nibh diam. Morbi mattis sagittis dui vel laoreet. Donec eget nunc fermentum, fringilla tellus eget, cursus ligula. 
+                    </p>
+                </div>
+            </div>
+            <div class="train-bar"></div>
 
-        <div id="blog-page">
-           <h1>Blog</h1>
-            <!-- UL or Table -->
-        </div>
+            <div class="train-bar"></div>
+            <div id="TrulyVote" class="proj">
+                <div class="proj-intro">
+                    <h3>Truly Vote</h3>
+                </div>
+                <div class="verticle-bar"></div>
+                <div class="proj-description">
+                    <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed sodales mauris ac velit efficitur, ut aliquet justo vulputate.
+                    Vivamus sit amet leo nibh. Nulla aliquet, justo non tristique volutpat, arcu risus blandit turpis, quis molestie odio sapien eu eros. 
+                    Pellentesque vestibulum nibh diam. Morbi mattis sagittis dui vel laoreet. Donec eget nunc fermentum, fringilla tellus eget, cursus ligula. 
+                    </p>
+                </div>
+            </div>
+            <div class="train-bar"></div>
 
-        <div id="personal-page">
-           <h1>Something I Like</h1>
-           
-           <!-- Context Dependent -->
+            <div class="train-bar"></div>
+            <div id="Halite" class="proj">
+                <div class="proj-intro">
+                    <h3>Halite.io</h3>
+                </div>
+                <div class="verticle-bar"></div>
+                <div class="proj-description">
+                    <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed sodales mauris ac velit efficitur, ut aliquet justo vulputate.
+                    Vivamus sit amet leo nibh. Nulla aliquet, justo non tristique volutpat, arcu risus blandit turpis, quis molestie odio sapien eu eros. 
+                    Pellentesque vestibulum nibh diam. Morbi mattis sagittis dui vel laoreet. Donec eget nunc fermentum, fringilla tellus eget, cursus ligula. 
+                    </p>
+                </div>
+            </div>
+            <div class="train-bar"></div>
+
+            <div class="train-bar"></div>
+            <div id="Escape-room" class="proj">
+                <div class="proj-intro">
+                    <h3>Escape Room</h3>
+                </div>
+                <div class="verticle-bar"></div>
+                <div class="proj-description">
+                    <p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Sed sodales mauris ac velit efficitur, ut aliquet justo vulputate.
+                    Vivamus sit amet leo nibh. Nulla aliquet, justo non tristique volutpat, arcu risus blandit turpis, quis molestie odio sapien eu eros. 
+                    Pellentesque vestibulum nibh diam. Morbi mattis sagittis dui vel laoreet. Donec eget nunc fermentum, fringilla tellus eget, cursus ligula. 
+                    </p>
+                </div>
+            </div>
+            <div class="train-bar"></div>
+
+            <!-- was considering using an unordered list but flexbox seemed like the better alternative-->
         </div>
     </div>
   </body>
@@ -50,11 +103,11 @@
 <!--
 TODOS:
 
-Add links to social icons
+Diagonal bar in projects
 
-Populate the biography
+Replace black bars with trains
 
-Create project elements and think about what content you can/want to present
+Add scroll movement to trains
 
 Parallax effect
 
