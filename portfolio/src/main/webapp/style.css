@@ -33,11 +33,14 @@ a > img{
   width: 2vw;
 }
 
+.text{
+  font-family: "Open Sans", serif;
+  font-size: 24pt;
+}
+
 #biography{
   padding-top: 5vh;
   width: 50vw;
-  font-size: 24pt;
-  font-family: "Open Sans", serif;
 }
 
 .transition-bar{
@@ -93,7 +96,6 @@ a > img{
 }
 
 .proj-description{
-  font-family: "Open Sans", serif;
   font-size: 24pt;
   width: 50vw;
   padding: 2vh 3vw 2vh 3vw;
