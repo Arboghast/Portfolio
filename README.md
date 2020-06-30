@@ -1,1 +1,1 @@
-This repo contains Sami's portfolio and STEP projects! 06/23/2020 via Google CloudShell
+This repository contains Sami's portfolio!
