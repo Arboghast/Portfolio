@@ -5,17 +5,11 @@ body {
 }
 
 #article {
-  display: flex;
-  flex-direction: column;
   border: 1px solid gold;
   padding: 1.5vh .9375vw 1.5vh .9375vw;
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border: 1px solid black;
 }
 
@@ -23,12 +17,10 @@ body {
   margin-top: 1vh;
   border: 1px solid purple;
   width: 100%;
-  display: flex;
-  justify-content: center;
 }
 
 .text {
-  font: 24pt 'Montserrat', serif;
+  font-size: 24pt;
 }
 
 .image {
@@ -42,20 +34,16 @@ body {
 }
 
 .date {
-  display: flex;
   border: 1px solid red;
   font-size: 14pt;
-  justify-content: flex-start;
   width: 100%;
 }
 
 .para {
-  font: 24pt 'Open Sans', serif;
+  font-size: 24pt;
 }
 
 .signature {
-  display: flex;
-  justify-content: flex-end;
   border: 1px solid skyblue;
   width: 95%;
   font-size: 36pt;
@@ -78,9 +66,6 @@ body {
 
 .user-input {
   border: 2px solid darkcyan;
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: space-evenly;
   background-color: grey;
 }
 

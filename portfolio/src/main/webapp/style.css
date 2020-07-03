@@ -6,17 +6,12 @@ body {
   background: paleturquoise;
   height: 100vh;
   width: 100vw;
-  flex-direction: column;
-  align-items: center;
-  display: flex;
 }
 
 #title {
   position: absolute;
-  margin-top: 41vh;
+  margin: 41vh 0 0 .75vw;
   font-size: 56pt;
-  margin-left: .75vw;
-  font-family: 'Montserrat', serif;
 }
 
 #tri {
@@ -24,8 +19,6 @@ body {
 }
 
 .social-links {
-  display: flex;
-  justify-content: space-evenly;
   width: 20vw;
 }
 
@@ -34,7 +27,6 @@ a > img {
 }
 
 .text {
-  font-family: "Open Sans", serif;
   font-size: 24pt;
 }
 
@@ -51,17 +43,12 @@ a > img {
 
 #project-page {
   background-color: aliceblue;
-  display: flex;
   width: 100vw;
   height: 300vh;
-  flex-direction: column;
-  align-items: center;
 }
 
 .subtitle {
-  padding-top: 6vh;
-  padding-bottom: 6vh;
-  font-family: 'Montserrat', serif;
+  padding: 6vh 0 6vh 0;
   font-size: 48pt;
 }
 
@@ -74,19 +61,13 @@ a > img {
 .proj {
   width: 100vw;
   height: 45vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
 }
 
 .proj-intro {
   flex-basis: 50vw;
   background-color: aquamarine;
   display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 40pt;
-  font-family: 'Montserrat', serif;
 }
 
 .verticle-bar {

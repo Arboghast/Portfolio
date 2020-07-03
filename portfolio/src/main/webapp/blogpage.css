@@ -9,14 +9,12 @@ body {
 }
 
 .title {
-  display: flex;
-  justify-content: center;
   height: 55vh;
   width: 100vw;
 }
 
 .title h1 {
-  font: 60pt "Montserrat", serif;
+  font-size: 60pt;
   padding: 20vh 0 20vh 0;
 }
 
@@ -44,8 +42,6 @@ body {
 
 .blog-grid {
   margin-top: 10vh;
-  display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
 }
 
@@ -54,8 +50,6 @@ body {
   height: 67vh;
   border: 2px solid blue;
   padding: 0 1.5vw 1.5vw 0;
-  display: flex;
-  flex-direction: column;
 }
 
 .thumbnail img {
@@ -69,28 +63,22 @@ body {
   height: 20vh;
   padding: 0 2vw 0 2vw;
   display: flex;
-  justify-content: center;
-  align-items: center;
   line-height: 1.7;
 }
 
 .text {
-  font: 16pt "Open Sans", serif;
+  font-size: 16pt;
 }
 
 .footer {
-  display: flex;
   width: 100%;
   border: 1px solid green;
   margin-top: 1.75%;
-  justify-content: space-between;
 }
 
 .blog-title {
   border: 1px solid gray;
   font-size: 18pt;
-  display: flex;
-  justify-content: center;
 }
 
 .blog:nth-child(even) {
