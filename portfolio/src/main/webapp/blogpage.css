@@ -1,5 +1,6 @@
 body {
   margin: auto;
+  font-family: 'Montserrat', serif;
 }
 
 .landing-section {
@@ -68,6 +69,7 @@ body {
 
 .text {
   font-size: 16pt;
+  font-family: 'Open Sans', serif;
 }
 
 .footer {

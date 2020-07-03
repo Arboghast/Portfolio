@@ -2,6 +2,7 @@ body {
   margin: auto;
   border: 1px solid green;
   padding: 4vh 2.5vw 4vh 2.5vw;
+  font-family: 'Montserrat', serif;
 }
 
 #article {

@@ -1,5 +1,6 @@
 body {
   margin: auto;
+  font-family: 'Montserrat', serif;
 }
 
 .landing-section {
@@ -28,6 +29,7 @@ a > img {
 
 .text {
   font-size: 24pt;
+  font-family: 'Open Sans', serif;
 }
 
 #biography {
