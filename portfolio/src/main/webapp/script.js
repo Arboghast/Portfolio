@@ -13,16 +13,20 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Randomly adds one of Sami's favorite quotes to the page
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+function getRandomQuote() {
+  const quotes =
+      ['All work and no play makes Sami a dull boy.',
+       'Just when I thought I was out, they pull me back in.', 
+       'Hello. My name is Inigo Montoya. You killed my father. Prepare to die.',
+       " You can't handle the truth!",
+       'An idea is like a virus'];
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  // Pick a random quote.
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const quoteContainer = document.getElementById('quote').getElementsByTagName('p')[0];
+  quoteContainer.innerText = quote;
 }
