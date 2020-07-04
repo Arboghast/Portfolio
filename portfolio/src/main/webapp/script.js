@@ -16,17 +16,11 @@
  * Randomly adds one of Sami's favorite quotes to the page
  */
 function getRandomQuote() {
-  const quotes =
-      ['All work and no play makes Sami a dull boy.',
-       'Just when I thought I was out, they pull me back in.', 
-       'Hello. My name is Inigo Montoya. You killed my father. Prepare to die.',
-       " You can't handle the truth!",
-       'An idea is like a virus'];
-
-  // Pick a random quote.
-  const quote = quotes[Math.floor(Math.random() * quotes.length)];
-
-  // Add it to the page.
-  const quoteContainer = document.getElementById('quote').getElementsByTagName('p')[0];
-  quoteContainer.innerText = quote;
+  fetch("/random-quote")
+  .then(response => response.text())
+  .then(quote => {
+    // Add it to the page.
+    const quoteContainer = document.getElementById('quote').getElementsByTagName('p')[0];
+    quoteContainer.innerText = quote;
+  }).catch(err => console.log(err))
 }
