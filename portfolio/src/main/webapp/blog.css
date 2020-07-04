@@ -71,12 +71,17 @@ body {
   background-color: grey;
 }
 
-.user-input input {
+.user-input textarea {
   width: 100%;
   box-sizing: border-box;
   border: 2px ridge blue;
   height: 10vh;
   border-radius: 10px;
+  resize: none;
+  font-size: 1.25rem;
+  word-wrap: break-word;
+  padding: 1vh .5vw 1vh .5vw;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .user-input button {
@@ -89,4 +94,5 @@ body {
   font-size: 20pt;
   align-self: flex-end;
   margin: .5vh .75vw .5vh 0;
+  cursor: pointer;  
 }
