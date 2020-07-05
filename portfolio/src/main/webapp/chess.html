@@ -12,7 +12,7 @@
 
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="getComments()">
        <div id="article" class="flex-col">
 
            <div class="header flex-col flex-center">
@@ -71,17 +71,17 @@
                        <h2>Comments:</h2>
                    </div>
                    <div id="comments-container" class="flex-col flex-justify-evenly">
-                       
+
                     </div>
                </div>
                <div class="submit">
                    <div class="text">
                       <h3>Leave  a comment!</h3>
                    </div>
-                   <div class="user-input flex-colrev flex-justify-evenly">
-                       <button class="text" onclick="getComments()">Submit</button>
-                       <textarea></textarea>
-                   </div>
+                   <form action="/comments" method="POST" class="user-input flex-colrev flex-justify-evenly">
+                       <input type="submit" class="text"/>
+                       <textarea name="user-input"></textarea>
+                   </form>
                </div>
            </div>
        </div>

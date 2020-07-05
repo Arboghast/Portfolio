@@ -46,6 +46,18 @@ public class CommentsServlet extends HttpServlet {
     response.getWriter().println(json);
   }
 
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    String userInput = request.getParameter("user-input");
+
+    comments.add(userInput);
+
+    response.setContentType("text/html;");
+    response.getWriter().println(userInput);
+
+    response.sendRedirect("/chess.html");
+  }
+
   private String toJson(List<String> list) {
     Gson gson = new Gson();
     String json = gson.toJson(list);
