@@ -94,16 +94,16 @@ body {
   font-size: 20pt;
   align-self: flex-end;
   margin: .5vh .75vw .5vh 0;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
-#comments-container{
+#comments-container {
   margin-left: 5vw;
   font-size: 16pt;
   border: 2px solid green;
 }
 
-#comments-container h4{
+#comments-container h4 {
   border: 2px solid pink;
   padding: 3vh 1vw 3vh 1.5vw;
 }
