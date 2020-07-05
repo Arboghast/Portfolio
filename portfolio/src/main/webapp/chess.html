@@ -67,8 +67,14 @@
 
            <div class="comments-section">
                <div class="comments">
-                   <div class="text">
+                   <div class="text flex-justify-between">
                        <h2>Comments:</h2>
+                       <select name="limit" id="comment-limit" onchange="getComments()">
+                          <option value="5">5</option>
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="null" selected>All</option>
+                        </select>
                    </div>
                    <div id="comments-container" class="flex-col flex-justify-evenly">
 
@@ -78,7 +84,7 @@
                    <div class="text">
                       <h3>Leave  a comment!</h3>
                    </div>
-                   <form action="/comments" method="POST" class="user-input flex-colrev flex-justify-evenly">
+                   <form action="/add-comment" method="POST" class="user-input flex-colrev flex-justify-evenly">
                        <input type="submit" class="text"/>
                        <textarea name="user-input"></textarea>
                    </form>

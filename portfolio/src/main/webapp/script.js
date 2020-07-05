@@ -26,14 +26,24 @@ function getRandomQuote() {
 }
 
 function getComments() {
-    fetch("/comments")
+    const limitInput = document.getElementById("comment-limit");
+    const value = limitInput.options[limitInput.selectedIndex].value;
+    let queryString = "/get-comments";
+    if(value != "null")
+    {
+        queryString += "?limit=" + value;
+    }
+
+    fetch(queryString)
     .then(response => response.json())
     .then(comments => {
         const commentsContainer = document.getElementById('comments-container');
-        for(let i = 0; i < comments.length; i++)
+        commentsContainer.innerHTML = "";
+        
+        for(let i = comments.length-1; i >=0; i--)
         {
             let h4 = document.createElement("h4");
-            let text = document.createTextNode(comments[i]);
+            let text = document.createTextNode(comments[i].message);
             h4.appendChild(text);
             commentsContainer.appendChild(h4);
         }

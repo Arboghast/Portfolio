@@ -14,53 +14,31 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.io.IOException;
-import java.util.ArrayList;
-import com.google.gson.Gson;
-import java.util.List;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/comments")
-public class CommentsServlet extends HttpServlet {
-
-  private List<String> comments;
-
-  @Override
-  public void init() {
-    comments = new ArrayList<String>();
-    comments.add("Great article Sami!");
-    comments.add("This was a complete waste of time :(");
-    comments.add("Another piece of liberal propaganda");
-  }
-
-  @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-
-    //convert to json using Gson library
-    String json = toJson(comments);
-    response.getWriter().println(json);
-  }
+@WebServlet("/add-comment")
+public class AddCommentServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String userInput = request.getParameter("user-input");
+    long timestamp = System.currentTimeMillis();
 
-    comments.add(userInput);
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("message", userInput);
+    commentEntity.setProperty("timestamp", timestamp);
 
-    response.setContentType("text/html;");
-    response.getWriter().println(userInput);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(commentEntity);
 
     response.sendRedirect("/chess.html");
-  }
-
-  private String toJson(List<String> list) {
-    Gson gson = new Gson();
-    String json = gson.toJson(list);
-    return json;
   }
 }
