@@ -24,3 +24,18 @@ function getRandomQuote() {
     quoteContainer.innerText = quote;
   }).catch(err => console.log(err))
 }
+
+function getComments() {
+    fetch("/comments")
+    .then(response => response.json())
+    .then(comments => {
+        const commentsContainer = document.getElementById('comments-container');
+        for(let i = 0; i < comments.length; i++)
+        {
+            let h4 = document.createElement("h4");
+            let text = document.createTextNode(comments[i]);
+            h4.appendChild(text);
+            commentsContainer.appendChild(h4);
+        }
+    }).catch(err => console.log(err))
+}
