@@ -1,0 +1,109 @@
+body {
+  margin: auto;
+  border: 1px solid green;
+  padding: 4vh 2.5vw 4vh 2.5vw;
+  font-family: 'Montserrat', serif;
+}
+
+#article {
+  border: 1px solid gold;
+  padding: 1.5vh .9375vw 1.5vh .9375vw;
+}
+
+.header {
+  border: 1px solid black;
+}
+
+.title {
+  margin-top: 1vh;
+  border: 1px solid purple;
+  width: 100%;
+}
+
+.text {
+  font-size: 24pt;
+}
+
+.image {
+  height: 66vh;
+}
+
+.image img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.date {
+  border: 1px solid red;
+  font-size: 14pt;
+  width: 100%;
+}
+
+.para {
+  font-size: 24pt;
+  font-family: 'Open Sans', serif;
+}
+
+.signature {
+  border: 1px solid skyblue;
+  width: 95%;
+  font-size: 36pt;
+  margin-bottom: 4vh;
+}
+
+.content {
+  border: 2px solid grey;
+  padding: 3vh 2vw 0 2vw;
+}
+
+.comments-section {
+  border: 2px solid blue;
+  margin-top: 3vh;
+}
+
+.comments {
+  border: 2px solid greenyellow;
+}
+
+.user-input {
+  border: 2px solid darkcyan;
+  background-color: grey;
+}
+
+.user-input textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px ridge blue;
+  height: 10vh;
+  border-radius: 10px;
+  resize: none;
+  font-size: 1.25rem;
+  word-wrap: break-word;
+  padding: 1vh .5vw 1vh .5vw;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.user-input input {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 8px;
+  border: 0;
+  width: 7vw;
+  height: 7vh;
+  font-size: 20pt;
+  align-self: flex-end;
+  margin: .5vh .75vw .5vh 0;
+  cursor: pointer;
+}
+
+#comments-container {
+  margin-left: 5vw;
+  font-size: 16pt;
+  border: 2px solid green;
+}
+
+#comments-container h4 {
+  border: 2px solid pink;
+  padding: 3vh 1vw 3vh 1.5vw;
+}
