@@ -84,7 +84,7 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.user-input button {
+.user-input input {
   display: inline-block;
   border-radius: 10px;
   padding: 8px;
@@ -94,5 +94,16 @@ body {
   font-size: 20pt;
   align-self: flex-end;
   margin: .5vh .75vw .5vh 0;
-  cursor: pointer;  
+  cursor: pointer;
+}
+
+#comments-container {
+  margin-left: 5vw;
+  font-size: 16pt;
+  border: 2px solid green;
+}
+
+#comments-container h4 {
+  border: 2px solid pink;
+  padding: 3vh 1vw 3vh 1.5vw;
 }

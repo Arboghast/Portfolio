@@ -13,16 +13,65 @@
 // limitations under the License.
 
 /**
- * Adds a random greeting to the page.
+ * Randomly adds one of Sami's favorite quotes to the page
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+function getRandomQuote() {
+  fetch("/random-quote")
+  .then(response => response.text())
+  .then(quote => {
+    // Add it to the page.
+    const quoteContainer = document.getElementById('quote').getElementsByTagName('p')[0];
+    quoteContainer.innerText = quote;
+  }).catch(err => console.log(err))
+}
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+function getComments() {
+    const limitInput = document.getElementById("comment-limit");
+    const value = limitInput.options[limitInput.selectedIndex].value;
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+    let blogTitle = document.getElementById("blog-title").innerHTML;
+    blogTitle = blogTitle.split(' ').join('_'); //Clean the url
+    let queryString = "/get-comments?" + "blog-title=" + blogTitle;
+
+    if(value != "null")
+    {
+        queryString += "&limit=" + value;
+    }
+
+
+    fetch(queryString)
+    .then(response => response.json())
+    .then(comments => {
+        const commentsContainer = document.getElementById('comments-container');
+        commentsContainer.innerHTML = "";
+
+        for(let i = comments.length-1; i >=0; i--)
+        {
+            let h4 = document.createElement("h4");
+            let text = document.createTextNode(comments[i].message);
+            h4.appendChild(text);
+
+            let deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "Delete Commment";
+            deleteButton.setAttribute("onclick","deleteComment(" + comments[i].id + ")");
+            h4.appendChild(deleteButton);
+
+            commentsContainer.appendChild(h4);
+        }
+    }).catch(err => console.log(err))
+}
+
+function updateForm() {
+    const blogTitle = document.getElementById("blog-title").innerHTML;
+    document.getElementById("form-blog-title").value = blogTitle.split(' ').join('_');
+}
+
+
+function deleteComment(id) {
+    const params = new URLSearchParams();
+    params.append('key', id);
+    fetch('/delete-comment', {method: 'POST', body: params})
+    .then(()=> {
+        getComments();
+    }).catch(err=>console.log(err))
 }
