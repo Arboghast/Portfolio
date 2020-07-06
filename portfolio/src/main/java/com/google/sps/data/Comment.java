@@ -17,12 +17,12 @@ package com.google.sps.data;
 // Data used to generate frontend comment html
 public final class Comment {
 
-  private final short id;  //short because it is more efficient and reasonable
+  private final long id;
   private final String message;
   private final long timestamp;
   //blogTitle is not necessary to send to the user
 
-  public Comment(short id, String message, long timestamp) {
+  public Comment(long id, String message, long timestamp) {
     this.id = id;
     this.message = message;
     this.timestamp = timestamp;

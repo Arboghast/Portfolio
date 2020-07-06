@@ -16,7 +16,7 @@ package com.google.sps.servlets;
 
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
-import com.google.appengine.api.datastore.Query.FilterOperator;
+import static com.google.appengine.api.datastore.Query.FilterOperator.EQUAL;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.sps.data.Comment;
 import com.google.appengine.api.datastore.DatastoreService;
@@ -51,7 +51,7 @@ public class GetCommentsServlet extends HttpServlet {
       queryLimit = FetchOptions.Builder.withLimit(limit);
     }
 
-    String blogTitle = request.parameter("blog-title");
+    String blogTitle = request.getParameter("blog-title");
     
     //filter for comments by blogpost
     FilterPredicate blogFilter = new FilterPredicate("blogTitle", EQUAL, blogTitle);
@@ -66,7 +66,7 @@ public class GetCommentsServlet extends HttpServlet {
     //Blog name is not necessary in the response
     List<Comment> comments = new ArrayList<>();
     for (Entity entity : results.asIterable(queryLimit)) {
-      short id = entity.getKey().getId();
+      long id = entity.getKey().getId();
       String message = (String) entity.getProperty("message");
       long timestamp = (long) entity.getProperty("timestamp");
 

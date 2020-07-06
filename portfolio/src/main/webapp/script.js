@@ -56,10 +56,9 @@ function getComments() {
     }).catch(err => console.log(err))
 }
 
-function addTitleToForm() {
-    const form = document.getElementById("form");
+function updateForm() {
     const blogTitle = document.getElementById("blog-title").innerHTML;
-    form.append("blog-title", blogTitle);
+    document.getElementById("form-blog-title").value = blogTitle;
 }
 
 
@@ -70,5 +69,4 @@ function deleteComment(id) {
     .then(()=> {
         getComments();
     }).catch(err=>console.log(err))
-    
 }

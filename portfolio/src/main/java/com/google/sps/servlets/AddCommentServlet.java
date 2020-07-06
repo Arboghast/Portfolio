@@ -36,7 +36,7 @@ public class AddCommentServlet extends HttpServlet {
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("message", userInput);
     commentEntity.setProperty("timestamp", timestamp);
-    commentEntity.setProperty("blogTitle", blogTitle)
+    commentEntity.setProperty("blogTitle", blogTitle);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
