@@ -6,7 +6,6 @@ body {
 .landing-section {
   background: paleturquoise;
   height: 100vh;
-  width: 100vw;
 }
 
 #title {
@@ -33,19 +32,17 @@ a > img {
 }
 
 #biography {
-  padding-top: 5vh;
-  width: 50vw;
+  padding: 0 25vw 0 25vw;
 }
 
 .transition-bar {
-  width: 100vw;
+  display: block;
   height: 10vh;
   background-color: black;
 }
 
 #project-page {
   background-color: aliceblue;
-  width: 100vw;
   height: 300vh;
 }
 
