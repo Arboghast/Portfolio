@@ -17,7 +17,7 @@ body {
 .title {
   margin-top: 1vh;
   border: 1px solid purple;
-  width: 100%;
+  display: inline-block;
 }
 
 .text {
@@ -47,7 +47,7 @@ body {
 
 .signature {
   border: 1px solid skyblue;
-  width: 95%;
+  padding-right: 5%;
   font-size: 36pt;
   margin-bottom: 4vh;
 }
