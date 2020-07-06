@@ -12,12 +12,12 @@
 
     <script src="script.js"></script>
   </head>
-  <body onload="getComments()">
+  <body onload="getComments();addTitleToForm()">
        <div id="article" class="flex-col">
 
            <div class="header flex-col flex-center">
                <div class="title text flex-justify-center">
-                 <h1> Full Title Here</h1>
+                 <h1 id="blog-title">Full Title Here</h1>
                </div>
                <div class="image">
                  <img src="images/building.jpg"/>
@@ -84,7 +84,7 @@
                    <div class="text">
                       <h3>Leave  a comment!</h3>
                    </div>
-                   <form action="/add-comment" method="POST" class="user-input flex-colrev flex-justify-evenly">
+                   <form action="/add-comment" method="POST" id="form" class="user-input flex-colrev flex-justify-evenly">
                        <input type="submit" class="text"/>
                        <textarea name="user-input"></textarea>
                    </form>

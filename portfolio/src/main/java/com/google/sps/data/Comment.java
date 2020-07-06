@@ -14,14 +14,15 @@
 
 package com.google.sps.data;
 
-/** A comment on a blog. */
+// Data used to generate frontend comment html
 public final class Comment {
 
-  private final long id;
+  private final short id;  //short because it is more efficient and reasonable
   private final String message;
   private final long timestamp;
+  //blogTitle is not necessary to send to the user
 
-  public Comment(long id, String message, long timestamp) {
+  public Comment(short id, String message, long timestamp) {
     this.id = id;
     this.message = message;
     this.timestamp = timestamp;

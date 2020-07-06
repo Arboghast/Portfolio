@@ -14,6 +14,9 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.FetchOptions;
 import com.google.sps.data.Comment;
 import com.google.appengine.api.datastore.DatastoreService;
@@ -31,26 +34,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** returns blog comments */
+/** returns all blog comments */
 @WebServlet("/get-comments")
 public class GetCommentsServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    String param = request.getParameter("limit");
-    Integer limit = 500;
-    if(param != null){
-        limit = Integer.valueOf(param);
+    Integer limit = paramToInteger(request, "limit", null);
+
+    //withDefaults() returns all comments
+    FetchOptions queryLimit;
+    if(limit == null) {
+      queryLimit = FetchOptions.Builder.withDefaults();
+    }
+    else {
+      queryLimit = FetchOptions.Builder.withLimit(limit);
     }
 
-    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
+    String blogTitle = request.parameter("blog-title");
+    
+    //filter for comments by blogpost
+    FilterPredicate blogFilter = new FilterPredicate("blogTitle", EQUAL, blogTitle);
+
+    Query query = new Query("Comment").setFilter(blogFilter)
+    .addSort("timestamp", SortDirection.DESCENDING);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
+    //Convert datastore response to Gson compatable Comment objects
+    //Blog name is not necessary in the response
     List<Comment> comments = new ArrayList<>();
-    for (Entity entity : results.asIterable(FetchOptions.Builder.withLimit(limit))) {
-      long id = entity.getKey().getId();
+    for (Entity entity : results.asIterable(queryLimit)) {
+      short id = entity.getKey().getId();
       String message = (String) entity.getProperty("message");
       long timestamp = (long) entity.getProperty("timestamp");
 
@@ -59,9 +75,17 @@ public class GetCommentsServlet extends HttpServlet {
     }
 
     Gson gson = new Gson();
-
     response.setContentType("application/json;");
     response.getWriter().println(gson.toJson(comments));
+  }
+
+  //Function parses parameter value into an integer
+  public Integer paramToInteger(HttpServletRequest request, String parameter, Integer defaultValue){
+    String param = request.getParameter(parameter);
+    if(param != null){
+        return Integer.valueOf(param);
+    }
+    return defaultValue;
   }
 
 }

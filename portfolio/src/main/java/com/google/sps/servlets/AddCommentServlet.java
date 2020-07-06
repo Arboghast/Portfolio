@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
+/** Servlet that adds a comment to our datastore when pinged*/
 @WebServlet("/add-comment")
 public class AddCommentServlet extends HttpServlet {
 
@@ -31,10 +31,12 @@ public class AddCommentServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String userInput = request.getParameter("user-input");
     long timestamp = System.currentTimeMillis();
+    String blogTitle = request.getParameter("blog-title");
 
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("message", userInput);
     commentEntity.setProperty("timestamp", timestamp);
+    commentEntity.setProperty("blogTitle", blogTitle)
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);

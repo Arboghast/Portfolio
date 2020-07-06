@@ -56,6 +56,13 @@ function getComments() {
     }).catch(err => console.log(err))
 }
 
+function addTitleToForm() {
+    const form = document.getElementById("form");
+    const blogTitle = document.getElementById("blog-title").innerHTML;
+    form.append("blog-title", blogTitle);
+}
+
+
 function deleteComment(id) {
     const params = new URLSearchParams();
     params.append('key', id);
