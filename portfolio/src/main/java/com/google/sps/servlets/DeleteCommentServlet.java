@@ -14,6 +14,7 @@
 
 package com.google.sps.servlets;
 
+import java.util.Enumeration;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.DatastoreService;
@@ -29,11 +30,13 @@ import javax.servlet.http.HttpServletResponse;
 public class DeleteCommentServlet extends HttpServlet {
 
   @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    long id = Long.parseLong(request.getParameter("id"));
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {	
+    long id = Long.parseLong(request.getParameter("key"));
 
     Key commentEntityKey = KeyFactory.createKey("Comment", id);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.delete(commentEntityKey);
+    response.sendRedirect("/chess.html");
+    System.out.println("hit");
   }
 }

@@ -39,13 +39,29 @@ function getComments() {
     .then(comments => {
         const commentsContainer = document.getElementById('comments-container');
         commentsContainer.innerHTML = "";
-        
+
         for(let i = comments.length-1; i >=0; i--)
         {
             let h4 = document.createElement("h4");
             let text = document.createTextNode(comments[i].message);
             h4.appendChild(text);
+
+            let deleteButton = document.createElement("button");
+            deleteButton.innerHTML = "Delete Commment";
+            deleteButton.setAttribute("onclick","deleteComment(" + comments[i].id + ")");
+            h4.appendChild(deleteButton);
+
             commentsContainer.appendChild(h4);
         }
     }).catch(err => console.log(err))
+}
+
+function deleteComment(id) {
+    const params = new URLSearchParams();
+    params.append('key', id);
+    fetch('/delete-comment', {method: 'POST', body: params})
+    .then(()=> {
+        getComments();
+    }).catch(err=>console.log(err))
+    
 }
