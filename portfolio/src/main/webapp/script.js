@@ -28,11 +28,16 @@ function getRandomQuote() {
 function getComments() {
     const limitInput = document.getElementById("comment-limit");
     const value = limitInput.options[limitInput.selectedIndex].value;
-    let queryString = "/get-comments";
+
+    let blogTitle = document.getElementById("blog-title").innerHTML;
+    blogTitle = blogTitle.split(' ').join('_'); //Clean the url
+    let queryString = "/get-comments?" + "blog-title=" + blogTitle;
+
     if(value != "null")
     {
-        queryString += "?limit=" + value;
+        queryString += "&limit=" + value;
     }
+
 
     fetch(queryString)
     .then(response => response.json())
@@ -58,7 +63,7 @@ function getComments() {
 
 function updateForm() {
     const blogTitle = document.getElementById("blog-title").innerHTML;
-    document.getElementById("form-blog-title").value = blogTitle;
+    document.getElementById("form-blog-title").value = blogTitle.split(' ').join('_');
 }
 
 

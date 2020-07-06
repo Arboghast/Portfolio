@@ -63,7 +63,7 @@ public class GetCommentsServlet extends HttpServlet {
     PreparedQuery results = datastore.prepare(query);
 
     //Convert datastore response to Gson compatable Comment objects
-    //Blog name is not necessary in the response
+    //Blog title is not necessary in the response
     List<Comment> comments = new ArrayList<>();
     for (Entity entity : results.asIterable(queryLimit)) {
       long id = entity.getKey().getId();
