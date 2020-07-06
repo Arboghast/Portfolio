@@ -6,12 +6,12 @@ body {
 .landing-section {
   background-color: cyan;
   height: 100vh;
-  width: 100vw;
+  display: block;
 }
 
 .title {
   height: 55vh;
-  width: 100vw;
+  display: inline-block;
 }
 
 .title h1 {
@@ -20,7 +20,7 @@ body {
 }
 
 #rect {
-  width: 100vw;
+  display: block;
   height: 45vh;
   background-color: black;
 }
@@ -37,7 +37,7 @@ body {
 
 .blog-section {
   height: 150vh;
-  width: 100vw;
+  display: block;
   margin-top: -350vh;
 }
 
@@ -54,7 +54,6 @@ body {
 }
 
 .thumbnail img {
-  max-width: 100%;
   width: 100%;
 }
 
@@ -73,7 +72,7 @@ body {
 }
 
 .footer {
-  width: 100%;
+  display: inline-block;
   border: 1px solid green;
   margin-top: 1.75%;
 }
