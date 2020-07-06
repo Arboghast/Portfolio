@@ -1,128 +1,107 @@
-body{
-  margin:auto;
-}
-
-.landing-section{
-  background: paleturquoise;
-  height: 100vh;
-  width: 100vw;
-  flex-direction: column;
-  align-items: center;
-  display: flex;
-}
-
-#title{
-  position: absolute;
-  margin-top: 41vh;
-  font-size: 56pt;
-  margin-left: 0.75vw;
+body {
+  margin: auto;
   font-family: 'Montserrat', serif;
 }
 
-#tri{
+.landing-section {
+  background: paleturquoise;
+  height: 100vh;
+  width: 100vw;
+}
+
+#title {
+  position: absolute;
+  margin: 41vh 0 0 .75vw;
+  font-size: 3.5rem;
+}
+
+#tri {
   width: 35vw;
 }
 
-.social-links{
-  display: flex;
-  justify-content: space-evenly;
+.social-links {
   width: 20vw;
 }
 
-a > img{
+a > img {
   width: 2vw;
 }
 
-.text{
-  font-family: "Open Sans", serif;
-  font-size: 24pt;
+.text {
+  font-size: 2em;
+  font-family: 'Open Sans', serif;
 }
 
-#biography{
+#biography {
   padding-top: 5vh;
   width: 50vw;
 }
 
-.transition-bar{
+.transition-bar {
   width: 100vw;
   height: 10vh;
   background-color: black;
 }
 
-#project-page{
+#project-page {
   background-color: aliceblue;
-  display: flex;
   width: 100vw;
   height: 300vh;
-  flex-direction: column;
-  align-items: center;
 }
 
-.subtitle{
-  padding-top: 6vh;
-  padding-bottom: 6vh;
-  font-family: 'Montserrat', serif;
-  font-size: 48pt;
+.subtitle {
+  padding: 6vh 0 6vh 0;
+  font-size: 5rem;
 }
 
-.train-bar{
+.train-bar {
   width: 100vw;
   height: 5vh;
   background-color: black;
 }
 
-.proj{
+.proj {
   width: 100vw;
   height: 45vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
 }
 
-.proj-intro{
+.proj-intro {
   flex-basis: 50vw;
   background-color: aquamarine;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40pt;
-  font-family: 'Montserrat', serif;
+  font-size: 3.4rem;
 }
 
-.verticle-bar{
+.verticle-bar {
   width: 25vw;
   height: 45vh;
   background-color: blue;
+  order: 2;
 }
 
-.proj-description{
-  font-size: 24pt;
+.proj-description {
   width: 50vw;
   padding: 2vh 3vw 2vh 3vw;
   line-height: 1.7;
 }
 
-.proj:nth-child(odd) .proj-intro{
+.proj:nth-child(odd) .proj-intro {
   order: 1;
 }
 
-.proj:nth-child(odd) .proj-description{
+.proj:nth-child(odd) .proj-description {
   order: 3;
 }
 
-.proj:nth-child(even) .proj-intro{
+.proj:nth-child(even) .proj-intro {
   order: 3;
 }
 
-.proj:nth-child(even) .proj-description{
+.proj:nth-child(even) .proj-description {
   order: 1;
 }
 
-.verticle-bar{
-  order: 2;
-}
-
-.train-bar + .train-bar{
+.train-bar + .train-bar {
   margin-top: 15vh;
 }
 

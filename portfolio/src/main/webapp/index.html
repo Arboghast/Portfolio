@@ -3,24 +3,26 @@
   <head>
     <meta charset="UTF-8">
     <title>Sami's Portfolio</title>
+
+    <!--Load CSS and Google Fonts-->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="shared.css">
 
     <script src="script.js"></script>
   </head>
-  <body>
+  <body onload="getRandomQuote()">
     <div id="content">
-
-        <div class="landing-section">
-            <img id="tri" src="tri.png"/>
+        <div class="landing-section flex-col flex-align-center">
+            <img id="tri" src="images/tri.png"/>
             <h1 id="title">Sami Hossain</h1>
-            <div class="social-links">
+            <div class="social-links flex-justify-evenly">
                 <a href="https://github.com/Arboghast" target="_blank">
-                    <img src="github.svg" />
+                    <img src="images/github.svg" alt="Github logo"/>
                 </a>
                 <a href="https://www.linkedin.com/in/sami-hossain/" target="_blank">
-                    <img src="linkedin.svg" />
+                    <img src="images/linkedin.svg" alt="Linkedin logo"/>
                 </a>
             </div>
             <div id="biography" class="text">
@@ -32,12 +34,12 @@
       
         <div class="transition-bar"></div>
 
-        <div id="project-page">
-            <h2 class="subtitle">Projects</h2>
+        <div id="project-page" class="flex-col flex-align-center">
+            <h2 class="subtitle ">Projects</h2>
                 
             <div class="train-bar"></div>
-            <div id="meet-up" class="proj">
-                <div class="proj-intro">
+            <div id="meet-up" class="proj flex-row flex-justify-evenly">
+                <div class="proj-intro flex-center">
                     <h3>MeetUp</h3>
                 </div>
                 <div class="verticle-bar"></div>
@@ -51,8 +53,8 @@
             <div class="train-bar"></div>
 
             <div class="train-bar"></div>
-            <div id="truly-vote" class="proj">
-                <div class="proj-intro">
+            <div id="truly-vote" class="proj flex-row">
+                <div class="proj-intro flex-center">
                     <h3>Truly Vote</h3>
                 </div>
                 <div class="verticle-bar"></div>
@@ -66,8 +68,8 @@
             <div class="train-bar"></div> 
 
             <div class="train-bar"></div>
-            <div id="halite" class="proj">
-                <div class="proj-intro">
+            <div id="halite" class="proj flex-row">
+                <div class="proj-intro flex-center">
                     <h3>Halite.io</h3>
                 </div>
                 <div class="verticle-bar"></div>
@@ -81,8 +83,8 @@
             <div class="train-bar"></div>
 
             <div class="train-bar"></div>
-            <div id="escape-room" class="proj">
-                <div class="proj-intro">
+            <div id="escape-room" class="proj flex-row">
+                <div class="proj-intro flex-center">
                     <h3>Escape Room</h3>
                 </div>
                 <div class="verticle-bar"></div>
@@ -94,10 +96,13 @@
                 </div>
             </div>
             <div class="train-bar"></div>
-
             <!-- was considering using an unordered list but flexbox seemed like the better alternative-->
         </div>
+        <div id="quote" class="text flex-justify-center">
+            <p></p>
+        </div>
     </div>
+    <a href="chess.html">to blog</a>
   </body>
 </html>
 
