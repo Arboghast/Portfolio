@@ -1,2 +1,9 @@
 target/
 .idea
+package-lock.json
+node_modules
+.stylelintrc.json
+.classpath
+.factorypath
+.project
+.settings/

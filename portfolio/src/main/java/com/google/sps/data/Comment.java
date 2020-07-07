@@ -14,14 +14,16 @@
 
 package com.google.sps.data;
 
-// Data used to generate frontend comment html
 public final class Comment {
 
   private final long id;
   private final String message;
   private final long timestamp;
-  //blogTitle is not necessary to send to the user
+  //not necessary to store blogTitle, frontend already has that information
 
+  /**
+   * Object used to convert datastore data to json data.
+   */
   public Comment(long id, String message, long timestamp) {
     this.id = id;
     this.message = message;

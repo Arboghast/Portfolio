@@ -6,7 +6,6 @@ body {
 .landing-section {
   background: paleturquoise;
   height: 100vh;
-  width: 100vw;
 }
 
 #title {
@@ -33,19 +32,17 @@ a > img {
 }
 
 #biography {
-  padding-top: 5vh;
-  width: 50vw;
+  padding: 0 25vw 0 25vw; 
 }
 
 .transition-bar {
-  width: 100vw;
+  display: block;
   height: 10vh;
   background-color: black;
 }
 
 #project-page {
   background-color: aliceblue;
-  width: 100vw;
   height: 300vh;
 }
 
@@ -81,7 +78,7 @@ a > img {
 
 .proj-description {
   width: 50vw;
-  padding: 2vh 3vw 2vh 3vw;
+  padding: 2vh 3vw 2vh 3vw; 
   line-height: 1.7;
 }
 
@@ -102,124 +99,5 @@ a > img {
 }
 
 .train-bar + .train-bar {
-  margin-top: 15vh;
-}
-
-.landing-section{
-  background: paleturquoise;
-  height: 100vh;
-  width: 100vw;
-  flex-direction: column;
-  align-items: center;
-  display: flex;
-}
-
-#title{
-  position: absolute;
-  margin-top: 41vh;
-  font-size: 56pt;
-  margin-left: 0.75vw;
-  font-family: 'Montserrat', serif;
-}
-
-#tri{
-  width: 35vw;
-}
-
-.social-links{
-  display: flex;
-  justify-content: space-evenly;
-  width: 20vw;
-}
-
-a > img{
-  width: 2vw;
-}
-
-#biography{
-  padding-top: 5vh;
-  width: 50vw;
-}
-
-.transition-bar{
-  width: 100vw;
-  height: 10vh;
-  background-color: black;
-}
-
-#project-page{
-  background-color: aliceblue;
-  display: flex;
-  width: 100vw;
-  height: 300vh;
-  flex-direction: column;
-  align-items: center;
-}
-
-.subtitle{
-  padding-top: 6vh;
-  padding-bottom: 6vh;
-  font-family: 'Montserrat', serif;
-  font-size: 48pt;
-}
-
-.train-bar{
-  width: 100vw;
-  height: 5vh;
-  background-color: black;
-}
-
-.proj{
-  width: 100vw;
-  height: 45vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.proj-intro{
-  flex-basis: 50vw;
-  background-color: aquamarine;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40pt;
-  font-family: 'Montserrat', serif;
-}
-
-.verticle-bar{
-  width: 25vw;
-  height: 45vh;
-  background-color: blue;
-}
-
-.proj-description{
-  font-size: 24pt;
-  width: 50vw;
-  padding: 2vh 3vw 2vh 3vw; 
-  line-height: 1.7;
-}
-
-.proj:nth-child(odd) .proj-intro{
-  order: 1;
-}
-
-.proj:nth-child(odd) .proj-description{
-  order: 3;
-}
-
-.proj:nth-child(even) .proj-intro{
-  order: 3;
-}
-
-.proj:nth-child(even) .proj-description{
-  order: 1;
-}
-
-.verticle-bar{
-  order: 2;
-}
-
-.train-bar + .train-bar{
   margin-top: 15vh;
 }

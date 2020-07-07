@@ -23,10 +23,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that adds a comment to our datastore when pinged*/
+/** Servlet that adds a comment to our datastore when pinged.*/
 @WebServlet("/add-comment")
 public class AddCommentServlet extends HttpServlet {
 
+  /**
+   * Client sends comment data via POST and we create a comment Entity with that information.
+   * We then add it to our datastore and force an update on the clientside via redirect.
+   */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String userInput = request.getParameter("user-input");
