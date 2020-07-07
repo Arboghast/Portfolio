@@ -16,62 +16,74 @@
  * Randomly adds one of Sami's favorite quotes to the page
  */
 function getRandomQuote() {
-  fetch("/random-quote")
-  .then(response => response.text())
-  .then(quote => {
-    // Add it to the page.
-    const quoteContainer = document.getElementById('quote').getElementsByTagName('p')[0];
-    quoteContainer.innerText = quote;
-  }).catch(err => console.log(err))
+  fetch('/random-quote')
+      .then((response) => response.text())
+      .then((quote) => {
+        // Add it to the page.
+        const quoteContainer = document.getElementById('quote').getElementsByTagName('p')[0];
+        quoteContainer.innerText = quote;
+      }).catch((err) => console.log(err));
 }
 
+/**
+ * Sends blog-title and user's prefered comment limit to the server
+ * to recieve all relevant comments
+ *
+ * Generates comment html using the recieved json and
+ * a delete button to remove each comment via id
+ */
 function getComments() {
-    const limitInput = document.getElementById("comment-limit");
-    const value = limitInput.options[limitInput.selectedIndex].value;
+  const limitInput = document.getElementById('comment-limit');
+  const value = limitInput.options[limitInput.selectedIndex].value;
 
-    let blogTitle = document.getElementById("blog-title").innerHTML;
-    blogTitle = blogTitle.split(' ').join('_'); //Clean the url
-    let queryString = "/get-comments?" + "blog-title=" + blogTitle;
+  let blogTitle = document.getElementById('blog-title').innerHTML;
+  blogTitle = blogTitle.split(' ').join('_'); // Clean the url
+  let queryString = '/get-comments?' + 'blog-title=' + blogTitle;
 
-    if(value != "null")
-    {
-        queryString += "&limit=" + value;
-    }
+  if (value != 'null') {
+    queryString += '&limit=' + value;
+  }
 
 
-    fetch(queryString)
-    .then(response => response.json())
-    .then(comments => {
+  fetch(queryString)
+      .then((response) => response.json())
+      .then((comments) => {
         const commentsContainer = document.getElementById('comments-container');
-        commentsContainer.innerHTML = "";
+        commentsContainer.innerHTML = '';
 
-        for(let i = comments.length-1; i >=0; i--)
-        {
-            let h4 = document.createElement("h4");
-            let text = document.createTextNode(comments[i].message);
-            h4.appendChild(text);
+        for (let i = comments.length-1; i >=0; i--) {
+          const h4 = document.createElement('h4');
+          const text = document.createTextNode(comments[i].message);
+          h4.appendChild(text);
 
-            let deleteButton = document.createElement("button");
-            deleteButton.innerHTML = "Delete Commment";
-            deleteButton.setAttribute("onclick","deleteComment(" + comments[i].id + ")");
-            h4.appendChild(deleteButton);
+          const deleteButton = document.createElement('button');
+          deleteButton.innerHTML = 'Delete Commment';
+          deleteButton.setAttribute('onclick', 'deleteComment(' + comments[i].id + ')');
+          h4.appendChild(deleteButton);
 
-            commentsContainer.appendChild(h4);
+          commentsContainer.appendChild(h4);
         }
-    }).catch(err => console.log(err))
+      }).catch((err) => console.log(err));
 }
 
+/**
+ * Adds the blog-title to a hidden form input so user's comments are added to the right blog
+ */
 function updateForm() {
-    const blogTitle = document.getElementById("blog-title").innerHTML;
-    document.getElementById("form-blog-title").value = blogTitle.split(' ').join('_');
+  const blogTitle = document.getElementById('blog-title').innerHTML;
+  document.getElementById('form-blog-title').value = blogTitle.split(' ').join('_');
 }
 
-
+/**
+ *
+ * @param {*} id - the id of the comment to be deleted
+ * and then refetches the comments list
+ */
 function deleteComment(id) {
-    const params = new URLSearchParams();
-    params.append('key', id);
-    fetch('/delete-comment', {method: 'POST', body: params})
-    .then(()=> {
+  const params = new URLSearchParams();
+  params.append('key', id);
+  fetch('/delete-comment', {method: 'POST', body: params})
+      .then(()=> {
         getComments();
-    }).catch(err=>console.log(err))
+      }).catch((err)=>console.log(err));
 }
