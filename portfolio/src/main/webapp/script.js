@@ -44,6 +44,10 @@ function getComments() {
     queryString += '&limit=' + value;
   }
 
+  const languageInput = document.getElementById('comment-language');
+  const language = languageInput.options[languageInput.selectedIndex].value;
+  queryString += '&language=' + language;
+
 
   fetch(queryString)
       .then((response) => response.json())
