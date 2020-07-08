@@ -77,13 +77,13 @@ function getComments() {
 
 function scoreToImage(sentimentScore){
   let imageUrl = "images/sad.svg";
-  if(sentimentScore >= 80){
+  if(sentimentScore >= .3){
     imageUrl = "images/cool.svg";
-  } else if(sentimentScore >= 60){
+  } else if(sentimentScore >= .1){
     imageUrl = "images/smile.svg";
-  } else if(sentimentScore >= 40){
+  } else if(sentimentScore >= -.1){
     imageUrl = "images/neutral.svg";
-  } else if(sentimentScore >= 20){
+  } else if(sentimentScore >= -.3){
     imageUrl = "images/confused.svg";
   }
 
