@@ -65,11 +65,30 @@ function getComments() {
           deleteButton.setAttribute('onclick', 'deleteComment(' + comments[i].id + ')');
           h4.appendChild(deleteButton);
 
+          const emotionImage = document.createElement('img');
+          let imageUrl = scoreToImage(comments[i].score);
+          emotionImage.setAttribute('src', imageUrl);
+          h4.appendChild(emotionImage);
+
           commentsContainer.appendChild(h4);
         }
       }).catch((err) => console.log(err));
 }
 
+function scoreToImage(sentimentScore){
+  let imageUrl = "images/sad.svg";
+  if(sentimentScore >= 80){
+    imageUrl = "images/cool.svg";
+  } else if(sentimentScore >= 60){
+    imageUrl = "images/smile.svg";
+  } else if(sentimentScore >= 40){
+    imageUrl = "images/neutral.svg";
+  } else if(sentimentScore >= 20){
+    imageUrl = "images/confused.svg";
+  }
+
+  return imageUrl;
+}
 /**
  * Adds the blog-title to a hidden form input so user's comments are added to the right blog
  */
