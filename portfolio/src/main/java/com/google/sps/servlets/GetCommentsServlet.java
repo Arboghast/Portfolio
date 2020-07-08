@@ -90,8 +90,9 @@ public class GetCommentsServlet extends HttpServlet {
         message = translateComment(language,message);
       }
       long timestamp = (long) entity.getProperty("timestamp");
+      float score = (float) entity.getProperty("score");
 
-      Comment comment = new Comment(id, message, timestamp);
+      Comment comment = new Comment(id, message, timestamp, score);
       comments.add(comment);
     }
 

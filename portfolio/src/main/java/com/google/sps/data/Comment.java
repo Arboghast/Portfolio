@@ -19,14 +19,16 @@ public final class Comment {
   private final long id;
   private final String message;
   private final long timestamp;
+  private final float score;
   //not necessary to store blogTitle, frontend already has that information
 
   /**
    * Object used to convert datastore data to json data.
    */
-  public Comment(long id, String message, long timestamp) {
+  public Comment(long id, String message, long timestamp, float score) {
     this.id = id;
     this.message = message;
     this.timestamp = timestamp;
+    this.score = score;
   }
 }
