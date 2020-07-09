@@ -1,3 +1,21 @@
+:root{
+    --angle: 0.26179938779;
+  /*-----------------
+  Magic Number Alert:
+  
+  the 0.09719 is calculated by this formula:
+  tan(11°) / 2
+  11° is the current skewY value.
+  ------------------*/
+  --tan-term1: var(--angle);
+  --tan-term2: calc((1/3) * var(--angle) * var(--angle) * var(--angle));
+  --tan-term3: calc((2 / 15) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle));
+  --tan-term4: calc((17/315) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle) * var(--angle));
+  --magic-number: calc(var(--tan-term1) + var(--tan-term2) + var(--tan-term3) + var(--tan-term4));
+
+  --skew-padding: calc(100vw * var(--magic-number));
+}
+
 body {
   margin: auto;
   font-family: 'Montserrat', serif;
@@ -35,19 +53,72 @@ body {
 
 #title {
     font-family: 'pixelnew';
-    animation-name: greenPulse;
+    /* animation-name: greenPulse;
     animation-duration: 2.5s;
-    animation-iteration-count: infinite;
+    animation-iteration-count: infinite; */
     font-size: calc(1.5rem + 2.5vw);
     display: block;
     margin-top: calc(2.5rem + 1.5vw);
+}
+
+@media only screen and (max-width: 900px) {
+  .proj{
+      display: flex;
+      flex-direction: column;
+  }
+  .verticle-bar{
+      visibility: hidden;
+  }
+  .proj a {
+      width: auto;
+  }
+  .proj-description{
+      flex-basis: auto;
+  }
+  .proj:nth-child(even) .proj-description {
+        order: 3;
+        padding-left: calc(1rem + 2.75vw);
+        padding-right: calc(1rem + 2.75vw);
+  }
+  .proj:nth-child(odd) .proj-description {
+      order: 3;
+      padding-right: calc(1rem + 2.75vw);
+      padding-left: calc(1rem + 2.75vw);
+   }
+  
+}
+
+@media only screen and (min-width: 900px) {
+    .proj{
+        display: flex;
+        flex-direction: row;
+    }
+    .verticle-bar{
+        visibility: visible;
+    }
+    .proj a {
+        width: calc(2.5rem + 1.25vw);
+    }
+    .proj-description{
+        flex-basis: 50vw;
+    }
+    .proj:nth-child(even) .proj-description {
+        order: 1;
+        padding-left: calc(1rem + 2.75vw);
+        padding-right: calc(10rem + 14vw);
+    }
+    .proj:nth-child(odd) .proj-description {
+      order: 3;
+      padding-right: calc(1rem + 2vw);
+      padding-left: calc(7rem + 16vw);
+    }
 }
 
 .social-icons{
   width: 40%;
 }
 
-a {
+.social-icons a{
   width: calc(2.5rem + 1.25vw);
 }
 
@@ -78,8 +149,8 @@ a > img {
 }
 
 .subtitle {
-  padding: 8vh 0 8vh 0;
-  font-size: 5rem;
+  padding: 15vh 0 15vh 0;
+  font-size: 6rem;
 }
 
 .train-bar {
@@ -93,11 +164,11 @@ a > img {
   height: auto;
   position: relative;
   overflow: hidden;
+  backdrop-filter: opacity(0.85) blur(200px) grayscale(4.0);
 }
 
 .proj-intro {
   flex-basis: 50vw;
-  background-color: aquamarine;
   display: flex;
   font-size: 3.4rem;
 }
@@ -108,38 +179,41 @@ a > img {
 }
 
 .verticle-bar {
-  content: '';
-    position: absolute;
-    background: blue;
-    width: 18vh;
-    height: 177%;
-    transform: rotate(-23deg);
-    top: -210px;
-    left: 43%;
+  position: absolute;
+  background: blue;
+  width: calc(3rem + 3.5vw);
+  height: 100%;
+  top: 0;
+  z-index: 1;
 }
 
 .proj-description {
-  flex-basis: 50vw;
-  padding: 1.5vh 3vw 1.5vh 3vw;
-  padding-right: calc(1.5rem + 1.75vw);
-  padding-left: calc(1.5rem + 1.75vw);
-  line-height: 1.7;
+  padding: 1.5vh 0 1.5vh 0;
+  line-height: calc(2.25rem + 1vw);
 }
 
 .proj:nth-child(odd) .proj-intro {
   order: 1;
 }
 
-.proj:nth-child(odd) .proj-description {
-  order: 3;
+.proj:nth-child(odd) .verticle-bar{
+  transform: skew(-15deg);
+}
+
+.proj:nth-child(odd) .verticle-bar{
+  left: 44%;
 }
 
 .proj:nth-child(even) .proj-intro {
   order: 3;
 }
 
-.proj:nth-child(even) .proj-description {
-  order: 1;
+.proj:nth-child(even) .verticle-bar{
+  transform: skew(15deg);
+}
+
+.proj:nth-child(even) .verticle-bar{
+  left: 47%;
 }
 
 .train-bar + .train-bar {
