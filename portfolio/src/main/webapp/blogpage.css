@@ -12,13 +12,14 @@ body {
 
 .title h1 {
   font-size: calc(15rem + 0vw);
-  color: lightseagreen;
+  color: steelblue;
+  border-color: teal;
 }
 
 #umbrella {
   height: 50vw;
-  background-image: url(images/u2b.png);
-  background-position: -4.75vw 3.4vw;
+  background-image: url(images/u2c.png);
+  background-position: -4.75vw 14.5vw;
   background-size: 110%;
   background-repeat-y: no-repeat;
 }
@@ -54,26 +55,29 @@ body {
 }
 
 .summary {
-  border: 1px solid red;
+  border: 15px double black;
   margin-top: calc(1rem + .25vw);
   padding: 0 2vw 0 2vw;
   line-height: calc(1.25rem + 1.5vw);
-  font-size: calc(1rem + 1vw);
+  font-size: calc(1rem + .75vw);
   text-align: center;
 }
 
 .text {
-  font-size: 16pt;
   font-family: 'Open Sans', serif;
 }
 
 .footer {
   display: inline-block;
-  border: 1px solid green;
   margin-top: 1.75%;
+  font-size: calc(.75rem + .4vw);
 }
 
 .blog-title {
-  border: 1px solid gray;
   font-size: calc(1.5rem + 1.5vw);
+  margin-bottom: 2vw;
+}
+
+.double-border{
+  border: 10px double black;
 }
