@@ -56,23 +56,41 @@ function getComments() {
         commentsContainer.innerHTML = '';
 
         for (let i = comments.length-1; i >=0; i--) {
+          const commentsDiv = document.createElement('div');
+          commentsDiv.setAttribute('class','comments-div');
+
           const h4 = document.createElement('h4');
           const text = document.createTextNode(comments[i].message);
           h4.appendChild(text);
+          commentsDiv.appendChild(h4);
 
           const deleteButton = document.createElement('button');
           deleteButton.innerHTML = 'Delete Commment';
           deleteButton.setAttribute('onclick', 'deleteComment(' + comments[i].id + ')');
-          h4.appendChild(deleteButton);
+          commentsDiv.appendChild(deleteButton);
 
           const emotionImage = document.createElement('img');
           let imageUrl = scoreToImage(comments[i].score);
           emotionImage.setAttribute('src', imageUrl);
-          h4.appendChild(emotionImage);
+          commentsDiv.appendChild(emotionImage);
 
-          commentsContainer.appendChild(h4);
+          commentsContainer.appendChild(commentsDiv);
+
         }
-      }).catch((err) => console.log(err));
+      }).catch((err) => {
+        const commentsContainer = document.getElementById('comments-container');
+        commentsContainer.innerHTML = '';
+
+        const commentsDiv = document.createElement('div');
+        commentsDiv.setAttribute('class','comments-div');
+
+        const h4 = document.createElement("h4");
+        const text = document.createTextNode("No Comments");
+        h4.appendChild(text);
+
+        commentsDiv.appendChild(h4);
+        commentsContainer.appendChild(commentsDiv);
+      });
 }
 
 function scoreToImage(sentimentScore){
