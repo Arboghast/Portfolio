@@ -50,6 +50,19 @@ body {
   height: auto;
 }
 
+.blogpage-link{
+  position: absolute;
+  width: 15vw;
+  height: auto;
+  top: 0;
+  left: 0%;
+  text-decoration: none;
+  color: black;
+  font-size: calc(.5rem + 3vw);
+  border-bottom: 3px solid black;
+  border-right: 3px solid black;
+}
+
 #title {
     font-family: 'pixelnew';
     /* animation-name: greenPulse;

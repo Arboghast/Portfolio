@@ -11,7 +11,7 @@ body {
 }
 
 .title h1 {
-  font-size: calc(15rem + 0vw);
+  font-size: calc(8rem + 6vw);
   color: steelblue;
   border-color: teal;
 }
@@ -85,4 +85,17 @@ body {
 a {
   text-decoration: none !important;
   color: black;
+}
+
+.blogpage-link{
+  position: absolute;
+  width: 15vw;
+  height: auto;
+  top: 0;
+  left: 85%;
+  text-decoration: none;
+  color: steelblue;
+  font-size: calc(.5rem + 3vw);
+  border-bottom: 3px double teal;
+  border-left: 3px double teal;
 }
