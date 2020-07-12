@@ -81,3 +81,8 @@ body {
 .double-border{
   border: 10px double black;
 }
+
+a {
+  text-decoration: none !important;
+  color: black;
+}
