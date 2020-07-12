@@ -3,7 +3,7 @@ body {
   border: 1px solid green;
   font-family: 'Montserrat', serif;
   border: 20px double saddlebrown;
-  border-image: url(images/c1.jpg) 8% 8% round;
+  border-image: url('images/c1.jpg') 8% 8% round;
   border-style: solid;
   border-width: 90px;
 }
@@ -72,7 +72,6 @@ p::first-letter{
   padding: 1vw 2vw 0 2vw;
 }
 .comments div{
-  padding: 0 0.5vw 0 1.5vw;
   font-size: calc(.75rem + 1vw);
 }
 
@@ -175,4 +174,8 @@ select{
 
 .comments-div + .comments-div{
   margin-top: calc(2rem + 3vw);
+}
+
+.no-comments-div{
+  border: 10px ridge #f0df24;
 }

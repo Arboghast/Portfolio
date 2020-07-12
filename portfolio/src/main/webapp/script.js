@@ -82,7 +82,7 @@ function getComments() {
         commentsContainer.innerHTML = '';
 
         const commentsDiv = document.createElement('div');
-        commentsDiv.setAttribute('class','comments-div');
+        commentsDiv.setAttribute('class','no-comments-div');
 
         const h4 = document.createElement("h4");
         const text = document.createTextNode("No Comments");
