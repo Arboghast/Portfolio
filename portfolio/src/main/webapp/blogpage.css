@@ -4,6 +4,7 @@ body {
   background-image: url('images/6.png');
   background-size: cover;
   background-position: 70% 20%;
+  color: steelblue;
 }
 
 .landing-section {
@@ -24,17 +25,7 @@ body {
   background-repeat-y: no-repeat;
 }
 
-/* #pole {
-  background-color: red;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  width: 3vw;
-  height: 350vh;
-  margin-left: 49vw;
-} */
-
-.blog-grid{
+.blog-grid {
   margin-top: -2vw;
 }
 
@@ -45,13 +36,14 @@ body {
 .blog {
   margin: 8vw 5vw 8vw 5vw;
   padding: 1.75vw;
-  border-image: url(images/b1.png) 12% 12% round;
+  border-image: url('images/b1.png') 12% 12% round;
   border-width: 90px;
   border-style: solid;
 }
 
 .thumbnail img {
   width: 100%;
+  max-height: 90vh;
 }
 
 .summary {
@@ -61,10 +53,6 @@ body {
   line-height: calc(1.25rem + 1.5vw);
   font-size: calc(1rem + .75vw);
   text-align: center;
-}
-
-.text {
-  font-family: 'Open Sans', serif;
 }
 
 .footer {
@@ -78,24 +66,22 @@ body {
   margin-bottom: 2vw;
 }
 
-.double-border{
+.double-border {
   border: 10px double black;
 }
 
-a {
-  text-decoration: none !important;
-  color: black;
-}
-
-.blogpage-link{
+.blogpage-link {
   position: absolute;
   width: 15vw;
   height: auto;
   top: 0;
   left: 85%;
-  text-decoration: none;
   color: steelblue;
   font-size: calc(.5rem + 3vw);
   border-bottom: 3px double teal;
   border-left: 3px double teal;
+}
+
+a {
+  color: white;
 }

@@ -51,3 +51,7 @@
 .open-sans {
   font-family: 'Open Sans', serif;
 }
+
+.ignore{
+  text-decoration: none !important;
+}
