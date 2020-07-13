@@ -1,0 +1,87 @@
+body {
+  margin: auto;
+  font-family: 'Montserrat', serif;
+  background-image: url('../images/city-of-tears.png');
+  background-size: cover;
+  background-position: 70% 20%;
+  color: steelblue;
+}
+
+.landing-section {
+  display: block;
+}
+
+.title h1 {
+  font-size: calc(8rem + 6vw);
+  color: steelblue;
+  border-color: teal;
+}
+
+#umbrella {
+  height: 50vw;
+  background-image: url('../images/umbrella.png');
+  background-position: -4.75vw 14.5vw;
+  background-size: 110%;
+  background-repeat-y: no-repeat;
+}
+
+.blog-grid {
+  margin-top: -2vw;
+}
+
+.blog-section {
+  backdrop-filter: opacity(0.85) blur(20px) brightness(200%);
+}
+
+.blog {
+  margin: 8vw 5vw 8vw 5vw;
+  padding: 1.75vw;
+  border-image: url('../images/vintage-border.png') 12% 12% round;
+  border-width: 90px;
+  border-style: solid;
+}
+
+.thumbnail img {
+  width: 100%;
+  max-height: 90vh;
+}
+
+.summary {
+  border: 15px double black;
+  margin-top: calc(1rem + .25vw);
+  padding: 0 2vw 0 2vw;
+  line-height: calc(1.25rem + 1.5vw);
+  font-size: calc(1rem + .75vw);
+  text-align: center;
+}
+
+.footer {
+  display: inline-block;
+  margin-top: 1.75%;
+  font-size: calc(.75rem + .4vw);
+}
+
+.blog-title {
+  font-size: calc(1.5rem + 1.5vw);
+  margin-bottom: 2vw;
+}
+
+.double-border {
+  border: 10px double black;
+}
+
+.blogpage-link {
+  position: absolute;
+  width: 15vw;
+  height: auto;
+  top: 0;
+  left: 85%;
+  color: steelblue;
+  font-size: calc(.5rem + 3vw);
+  border-bottom: 3px double teal;
+  border-left: 3px double teal;
+}
+
+a {
+  color: white;
+}
