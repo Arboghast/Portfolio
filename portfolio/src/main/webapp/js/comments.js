@@ -96,9 +96,12 @@ function getComments() {
    */
   function deleteComment(id, el) {
     const params = new URLSearchParams();
+    const pageName = document.getElementById("page-name").value;
     params.append('key', id);
+    params.append('page-name',pageName);
+    console.log("hit");
     fetch('/delete-comment', {method: 'POST', body: params})
         .then(()=> {
-          console.log(el);
+          getComments();
         }).catch((err)=>console.log(err));
   }

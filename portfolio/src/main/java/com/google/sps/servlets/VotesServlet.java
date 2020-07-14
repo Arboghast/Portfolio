@@ -16,30 +16,34 @@ package com.google.sps.servlets;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that deletes a specific comment by id. */
-@WebServlet("/delete-comment")
-public class DeleteCommentServlet extends HttpServlet {
+/** Servlet */
+@WebServlet("/vote-comment")
+public class VotesServlet extends HttpServlet {
 
   /**
-   * The client sends us a comment id through POST and we remove that comment from
-   * the datastore via the id. We then force an update on the clientside via redirect.
+   * 
+   * 
    */
   @Override
-  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {	
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     long id = Long.parseLong(request.getParameter("key"));
 
     Key commentEntityKey = KeyFactory.createKey("Comment", id);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.delete(commentEntityKey);
-    
+    Entity comment = datastore.get(commentEntityKey);
+
+    String voteType = request.getParameter("vote-type");
+
+    int count = comment.getProperty(votetype)+1;
+    comment.setProperty(voteType,count);
+
     String page = "/blogs/" + request.getParameter("page-name");
     response.sendRedirect(page);
   }
