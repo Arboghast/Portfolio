@@ -20,6 +20,8 @@ public final class Comment {
   private final String message;
   private final long timestamp;
   private final float score;
+  private final int likes;
+  private final int dislikes;
   //not necessary to store blogTitle, frontend already has that information
 
   /**
@@ -30,5 +32,7 @@ public final class Comment {
     this.message = message;
     this.timestamp = timestamp;
     this.score = score;
+    this.likes = 0;
+    this.dislikes = 0;
   }
 }

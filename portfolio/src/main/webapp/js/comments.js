@@ -39,7 +39,7 @@ function getComments() {
   
             const deleteButton = document.createElement('button');
             deleteButton.innerHTML = 'Delete Commment';
-            deleteButton.setAttribute('onclick', 'deleteComment(' + comments[i].id + ')');
+            deleteButton.setAttribute('onclick', 'deleteComment(' + comments[i].id + ',' + 'this)');
             commentsDiv.appendChild(deleteButton);
   
             const emotionImage = document.createElement('img');
@@ -67,15 +67,16 @@ function getComments() {
   }
   
   function scoreToImage(sentimentScore){
-    let imageUrl = "images/sad.svg";
+    const path = "../images/emotions/";
+    let imageUrl = path + "sad.svg";
     if(sentimentScore >= .3){
-      imageUrl = "images/cool.svg";
+      imageUrl = path + "cool.svg";
     } else if(sentimentScore >= .1){
-      imageUrl = "images/smile.svg";
+      imageUrl = path + "smile.svg";
     } else if(sentimentScore >= -.1){
-      imageUrl = "images/neutral.svg";
+      imageUrl = path + "neutral.svg";
     } else if(sentimentScore >= -.3){
-      imageUrl = "images/confused.svg";
+      imageUrl = path + "confused.svg";
     }
   
     return imageUrl;
@@ -93,12 +94,11 @@ function getComments() {
    * @param {*} id - the id of the comment to be deleted
    * and then refetches the comments list
    */
-  function deleteComment(id) {
+  function deleteComment(id, el) {
     const params = new URLSearchParams();
     params.append('key', id);
     fetch('/delete-comment', {method: 'POST', body: params})
         .then(()=> {
-          getComments();
+          console.log(el);
         }).catch((err)=>console.log(err));
   }
-  
