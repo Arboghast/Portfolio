@@ -17,6 +17,9 @@ package com.google.sps.servlets;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 public class VotesServlet extends HttpServlet {
 
   /**
-   * 
+   * parameters: Comment ID, Vote Type, page-name
    * 
    */
   @Override
@@ -37,14 +40,24 @@ public class VotesServlet extends HttpServlet {
 
     Key commentEntityKey = KeyFactory.createKey("Comment", id);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    Entity comment = datastore.get(commentEntityKey);
 
-    String voteType = request.getParameter("vote-type");
+    Entity comment; 
 
-    int count = comment.getProperty(votetype)+1;
-    comment.setProperty(voteType,count);
+    try {
+        comment = datastore.get(commentEntityKey);
+        String voteType = request.getParameter("vote-type");
 
-    String page = "/blogs/" + request.getParameter("page-name");
-    response.sendRedirect(page);
+        int count = (int) comment.getProperty(voteType);
+        count++;
+        comment.setProperty(voteType,count);
+
+        String page = "/blogs/" + request.getParameter("page-name");
+        response.sendRedirect(page);
+    } 
+    catch (EntityNotFoundException e) 
+    {
+        System.out.println(e);
+    }
+
   }
 }

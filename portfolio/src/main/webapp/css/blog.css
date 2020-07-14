@@ -106,11 +106,11 @@ p::first-letter {
 .user-input input {
   display: inline-block;
   border-radius: 10px;
-  padding: 8px;
+  padding: calc(.1rem + .25vw);
   border: 2px solid black;
   width: 7vw;
   height: 7vh;
-  font-size: 20pt;
+  font-size: calc(.2rem + 1.25vw);
   align-self: flex-end;
   margin: 1vw 0 0 0;
   cursor: pointer;
@@ -174,4 +174,34 @@ select {
 
 .no-comments-div {
   border: 10px ridge #f0df24;
+}
+
+.message-div{
+    justify-content: space-between;
+    padding-right: 3vw;
+}
+
+.message-div img{
+    width: calc(5rem + 1vw);
+}
+
+.thumbs-div{
+    width: 20vw;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.thumbs-div img{
+    width: calc(3rem + 1vw);
+}
+
+.bottom-div{
+    justify-content: space-between;
+    padding-right: 3vw;
+    margin-bottom: 1vw;
+}
+
+.bottom-div button{
+    font-size: calc(.05rem + 1.25vw);
+    border-radius: 12px;
 }

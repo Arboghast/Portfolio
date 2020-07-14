@@ -29,26 +29,8 @@ function getComments() {
           commentsContainer.innerHTML = '';
   
           for (let i = comments.length-1; i >=0; i--) {
-            const commentsDiv = document.createElement('div');
-            commentsDiv.setAttribute('class','comments-div');
-  
-            const h4 = document.createElement('h4');
-            const text = document.createTextNode(comments[i].message);
-            h4.appendChild(text);
-            commentsDiv.appendChild(h4);
-  
-            const deleteButton = document.createElement('button');
-            deleteButton.innerHTML = 'Delete Commment';
-            deleteButton.setAttribute('onclick', 'deleteComment(' + comments[i].id + ',' + 'this)');
-            commentsDiv.appendChild(deleteButton);
-  
-            const emotionImage = document.createElement('img');
-            let imageUrl = scoreToImage(comments[i].score);
-            emotionImage.setAttribute('src', imageUrl);
-            commentsDiv.appendChild(emotionImage);
-  
+            const commentsDiv = createMessage(comments[i]);
             commentsContainer.appendChild(commentsDiv);
-  
           }
         }).catch((err) => {
           const commentsContainer = document.getElementById('comments-container');
@@ -64,6 +46,54 @@ function getComments() {
           commentsDiv.appendChild(h4);
           commentsContainer.appendChild(commentsDiv);
         });
+  }
+  
+  function createMessage(comment){
+      const commentsDiv = document.createElement('div');
+      commentsDiv.setAttribute('class','comments-div');
+
+      const messageDiv = document.createElement('div');
+      messageDiv.setAttribute('class','message-div flex-row');  
+      const h4 = document.createElement('h4');
+      const text = document.createTextNode(comment.message);
+      h4.appendChild(text);
+      messageDiv.appendChild(h4);
+
+      const emotionImage = document.createElement('img');
+      let imageUrl = scoreToImage(comment.score);
+      emotionImage.setAttribute('src', imageUrl);
+      messageDiv.appendChild(emotionImage);
+      commentsDiv.appendChild(messageDiv);
+
+      const bottomDiv = document.createElement('div');
+      bottomDiv.setAttribute('class','bottom-div flex-row');
+
+      const thumbsDiv = document.createElement('div');
+      thumbsDiv.setAttribute('class','thumbs-div flex-row')  
+      const likeImg = document.createElement('img');
+      likeImg.setAttribute('onclick', 'addLike(' + this + ')');
+      likeImg.setAttribute('src', "../images/emotions/thumb-up.svg")
+      thumbsDiv.appendChild(likeImg);
+
+      const likeVal = document.createTextNode('0');
+      thumbsDiv.appendChild(likeVal);
+
+      const dislikeImg = document.createElement('img');
+      dislikeImg.setAttribute('onclick', 'addDislike(' + this + ')');
+      dislikeImg.setAttribute('src', "../images/emotions/thumb-down.svg")
+      thumbsDiv.appendChild(dislikeImg);
+      bottomDiv.appendChild(thumbsDiv);
+
+      const dislikeVal = document.createTextNode('0');
+      thumbsDiv.appendChild(dislikeVal);
+
+      const deleteButton = document.createElement('button');
+      deleteButton.innerHTML = 'Delete Commment';
+      deleteButton.setAttribute('onclick', 'deleteComment(' + comment.id +')');
+      bottomDiv.appendChild(deleteButton);
+      commentsDiv.appendChild(bottomDiv);
+
+      return commentsDiv;
   }
   
   function scoreToImage(sentimentScore){
@@ -94,12 +124,12 @@ function getComments() {
    * @param {*} id - the id of the comment to be deleted
    * and then refetches the comments list
    */
-  function deleteComment(id, el) {
+  function deleteComment(id) {
     const params = new URLSearchParams();
     const pageName = document.getElementById("page-name").value;
     params.append('key', id);
     params.append('page-name',pageName);
-    console.log("hit");
+
     fetch('/delete-comment', {method: 'POST', body: params})
         .then(()=> {
           getComments();
