@@ -2,8 +2,12 @@ target/
 .idea
 package-lock.json
 node_modules
-.stylelintrc.json
+.stylelintrc
 .classpath
 .factorypath
 .project
 .settings/
+walkthroughs/week-1-setup
+walkthroughs/week-2-web-development
+walkthroughs/week-3-server
+walkthroughs/week-4-libraries
