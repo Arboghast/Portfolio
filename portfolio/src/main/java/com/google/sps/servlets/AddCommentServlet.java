@@ -40,24 +40,26 @@ public class AddCommentServlet extends HttpServlet {
     long timestamp = System.currentTimeMillis();
     String blogTitle = request.getParameter("blog-title");
 
-    Document doc =
-        Document.newBuilder().setContent(userInput).setType(Document.Type.PLAIN_TEXT).build();
-    LanguageServiceClient languageService = LanguageServiceClient.create();
-    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
-    float score = sentiment.getScore();
-    languageService.close();
+    // Document doc =
+    //     Document.newBuilder().setContent(userInput).setType(Document.Type.PLAIN_TEXT).build();
+    // LanguageServiceClient languageService = LanguageServiceClient.create();
+    // Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    // float score = sentiment.getScore();
+    // languageService.close();
+    double score = 0.3;
 
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("message", userInput);
     commentEntity.setProperty("timestamp", timestamp);
     commentEntity.setProperty("blogTitle", blogTitle);
-    commentEntity.setProperty("score",score);
+    commentEntity.setProperty("score", score);
     commentEntity.setProperty("likes", 0);
     commentEntity.setProperty("dislikes", 0);
 
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
 
-    response.sendRedirect("/chess.html");
+    String page = "/blogs/" + request.getParameter("page-name");
+    response.sendRedirect(page);
   }
 }

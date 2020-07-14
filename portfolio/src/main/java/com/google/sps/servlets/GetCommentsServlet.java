@@ -41,12 +41,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/get-comments")
 public class GetCommentsServlet extends HttpServlet {
 
-  private Translate translate; 
-
-  public GetCommentsServlet(){
-    translate = TranslateOptions.getDefaultInstance().getService();
-  }
-  
   /** 
    *   Obtain the users preferred comment limit from the query string and builds a FetchOption to
    * recieve that specific number of comments from the datastore.  
@@ -86,11 +80,11 @@ public class GetCommentsServlet extends HttpServlet {
     for (Entity entity : results.asIterable(queryLimit)) {
       long id = entity.getKey().getId();
       String message =(String) entity.getProperty("message");
-      if(language != "en") {
+      if(!language.equals("en")) {
         message = translateComment(language,message);
       }
       long timestamp = (long) entity.getProperty("timestamp");
-      float score = (float) entity.getProperty("score");
+      double score = (double) entity.getProperty("score");
 
       Comment comment = new Comment(id, message, timestamp, score);
       comments.add(comment);
@@ -117,8 +111,9 @@ public class GetCommentsServlet extends HttpServlet {
   }
 
   public String translateComment(String languageCode, String comment) {
+    Translate translate = TranslateOptions.getDefaultInstance().getService();
     Translate.TranslateOption newLanguage = Translate.TranslateOption.targetLanguage(languageCode);
-    String translatedText = this.translate.translate(comment, newLanguage).getTranslatedText();
+    String translatedText = translate.translate(comment, newLanguage).getTranslatedText();
     return translatedText;
   }
 
