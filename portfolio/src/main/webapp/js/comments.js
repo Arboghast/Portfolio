@@ -10,7 +10,7 @@ function getComments() {
     const value = limitInput.options[limitInput.selectedIndex].value;
   
     let blogTitle = document.getElementById('blog-title').innerHTML;
-    blogTitle = blogTitle.split(' ').join('_'); // Clean the url
+    blogTitle = blogTitle.split(' ').join('_'); // Clean the url: Generic blog Title -> Generic_blog_title
     let queryString = '/get-comments?' + 'blog-title=' + blogTitle;
   
     if (value != 'null') {
@@ -21,7 +21,7 @@ function getComments() {
     const language = languageInput.options[languageInput.selectedIndex].value;
     queryString += '&language=' + language;
   
-  
+    //dynamically creating html elements using the response from the getComments api and appending it to the webpage
     fetch(queryString)
         .then((response) => response.json())
         .then((comments) => {
@@ -32,7 +32,7 @@ function getComments() {
             const commentsDiv = createMessage(comments[i]);
             commentsContainer.appendChild(commentsDiv);
           }
-        }).catch((err) => {
+        }).catch((err) => { //The no-comments html element
           const commentsContainer = document.getElementById('comments-container');
           commentsContainer.innerHTML = '';
   
