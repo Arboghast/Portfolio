@@ -20,26 +20,29 @@ import java.util.Set;
 import java.util.Iterator;
 import java.util.ArrayList;
 
+//Was able to get the runtime down from ~4.5 secs to ~2.8 secs by removing unnecessary loops(condensing the logic), then down to ~2.6 secs by simplifying conditionals
 public final class FindMeetingQuery {
-  public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) { //Was able to get the runtime down from ~4.5 secs to ~2.8 secs by removing unnecessary loops(condensing the logic), then down to ~2.6 secs by simplifying conditionals
+  public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) { 
     long meetingDuration = request.getDuration();
-    if(meetingDuration > 24*60)
+    final int WHOLE_DAY = 24*60;
+    if(meetingDuration > WHOLE_DAY)
     {
         return new ArrayList<TimeRange>();
     }
 
-    TimeRange initial = TimeRange.fromStartEnd(0,24*60,false);  //whole day
+    TimeRange initial = TimeRange.fromStartEnd(0,WHOLE_DAY,false); //Whole day
     Collection<TimeRange> validTimes = new ArrayList<TimeRange>();
     validTimes.add(initial);
 
     final Collection<Event> conflicts = new ArrayList<Event>();
     final Collection<String> wantedGuests = request.getAttendees();
 
-    //determine all mandatory attendees events
+    //Determine all mandatory attendees events
     for(final Event event: events){
         for(final String guest: event.getAttendees())
         {
-            if(wantedGuests.contains(guest))  //break on first guest found, no need to keep looking in the same event
+             //Break on first guest found, no need to keep looking in the same event
+            if(wantedGuests.contains(guest)) 
             {
                 conflicts.add(event);
                 break;
@@ -47,7 +50,7 @@ public final class FindMeetingQuery {
         }
     }
 
-    // check for subsets
+    //Check for subsets
     for(final Event event: conflicts)
     {
         TimeRange eventTime = event.getWhen();
@@ -56,7 +59,9 @@ public final class FindMeetingQuery {
             TimeRange timeBefore = TimeRange.fromStartEnd(valid.start(), eventTime.start(),false);
             TimeRange timeAfter = TimeRange.fromStartEnd(eventTime.end(),valid.end(),false);
             TimeRange updateRange;
-            if(valid.contains(eventTime)){          //event is a subset of a valid time, which means we have to divide the valid time into two chunks
+
+            //Event is a subset of a valid time, which means we have to divide the valid time into two chunks
+            if(valid.contains(eventTime)){
 
                 validTimes.remove(valid);
                 if(meetingDuration <= timeBefore.duration()){
@@ -66,8 +71,9 @@ public final class FindMeetingQuery {
                     validTimes.add(timeAfter);
                 }
                 break;
-
-            } else if(valid.overlaps(eventTime)){       //event overlaps with a valid time, must alter the range of that valid time
+            
+            //event overlaps with a valid time, must alter the range of that valid time
+            } else if(valid.overlaps(eventTime)){
 
                 if(valid.contains(eventTime.start()))
                 {
