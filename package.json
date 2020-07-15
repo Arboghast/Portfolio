@@ -1,7 +1,13 @@
 {
-    "name" : "sami-portfolio",
-    "version" : "1.0.0",
+    "name": "sami-portfolio",
+    "version": "1.0.0",
     "scripts": {
-        "lint" : "npx stylelint '**/*.css'"
+        "lint": "npx stylelint '**/*.css'",
+        "jslint": "./node_modules/.bin/eslint ./portfolio/src/main/webapp/script.js --fix"
+    },
+    "devDependencies": {
+        "eslint": "^7.4.0",
+        "eslint-config-google": "^0.14.0",
+        "stylelint-config-standard": "^20.0.0"
     }
 }

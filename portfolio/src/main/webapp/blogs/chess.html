@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess</title>
+
+    <!--Import CSS and Google fonts-->
+    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="../css/shared.css">
+
+    <script src="../js/comments.js"></script>
+  </head>
+  <body onload="getComments();updateForm()">
+       <div id="article" class="flex-col">
+
+           <div class="header flex-col flex-center">
+               <div class="title text flex-justify-center">
+                 <h1 id="blog-title">The Game of the Century</h1>
+               </div>
+               <div class="image">
+                 <img src="../images/blog-pics/ko.jpg" alt="A pawn punching a king"/>
+               </div>
+               <div class="date text flex-justify-start">
+                 <h3>Published: 07/10/2020</h3>
+               </div>
+           </div>
+
+           <div class="content">
+               <div class="para open-sans">
+                   <p> This is an Essay written by Emma Pierson, who had a 1768 USCF rating 
+                   </p>
+                   <p>
+                    It is getting late. I am sitting across the table from a guy, our knees not quite touching. Around us, the room has gradually emptied and now we are alone. Our eyes meet for half a second; he looks away. I continue to study his face, searching for clues. He seems composed; my hands are shaking. I watch intently as he meets my eyes again and reaches slowly towards me.
+                   </p>
+                   <p>
+                    Then he moves his rook two squares to the right and taps the clock, starting my timer counting down. I cup my chin in my hands, trying to overcome my exhaustion. We have been playing for four hours, and I have not eaten dinner; my headache has faded to a mental numbness. As my energy has ebbed, however, my antipathy has grown; at this point, my need for food is compensated for by my desire to destroy my opponent. I contemplate hideous chessboard revenges–first, I'll skewer him, then I'll fork his rooks; I'll finish him off with a vicious zugzwang. He resigns half an hour later, to my relief, and I feel my anger fading. No longer my opponent, he now seems likeable once more.
+                   </p>
+                   <p>
+                    As we pick up the pieces, I remember what it's so easy to forget–it's only a game.
+                    My grandfather taught me to play chess when I was seven. We played at a local French café; I learned the rules over baguettes and crepes with strawberries and whipped cream. We must have made a strange sight, a seven year old and a seventy year old, his expression of fierce concentration mirrored on my pudgy face. We became regulars, arriving at 9:00 each Sunday and lingering for hours; slowly, I began to grasp the tactics and gain an intuitive sense of the game, though it would be years before I could beat him. On occasion, the owner of the café would comment on our game, asking who was winning. "She's a killer," my grandfather would say proudly, shaking his head and grinning.
+                   </p>
+                   <p>
+                    By the time I was nine, my interest had grown to the point that my parents were searching for other players. A man who taught at the U.S. Chess Center in D.C. destroyed me. Realizing my position was hopeless, I offered him a draw. He looked at me sternly. "That's poor sportsmanship," he said. Chagrined, I turned to go, but he stopped meat the door. "Who taught you to play?" he asked.
+                    "My grandfather," I replied.
+                    "Tell him that he did a good job," he said.
+                    That summer I went to a camp at the Chess Center; in the years that followed, I have been there more times than I can count. The Chess Center was founded by David Mehler, a chess expert, polymath and Harvard dropout, in a crusade to improve children's lives through chess. His theory–substantiated by scientific evidence–is that chess improves concentration, memory, and general academic ability. Mr. Mehler is brilliant and caustic; he mocks adults and children alike. Although he can be a patient and subtle teacher, he swiftly rewards stupidity or arrogance with biting sarcasm. If I am playing when he enters the room, I will try to avoid moving until he has left, for fear of his reaction to a mistake. He does not tolerate troublemakers in his domain; pushups are doled out as punishment for mischief, and he even stuffed one miscreant into a trash can. ("Don'tdo it after lunch," he advised the boy, "It'll be full then and I'll stick you in upside-down.") His demeanor seems at odds with the philanthropy of his actions.
+                   </p>
+                   <p>
+                    The Chess Center is a non-profit organization housed in a basement, apparently kept alive through donations or bankrolled by Mr. Mehler. Whatever the reason for his crusade to save the world through chess, profit was certainly not one of them. Mr. Mehler's personality epitomizes the qualities that I find so often in chess players. The layers of sarcasm and introversion, the eccentricities and prickliness, often disguise a person well worth knowing.
+                    There is no such thing as a typical chess player; I have played reverends and accused felons, football players and math prodigies, the young and the dying and everyone in between. In spite of this diversity, there are commonalities that draw us to the game.
+                    A chess game is, in a way, very similar to a human life. Chess games are stories: brief, reckless, and dramatic, or long, slow, and careful. A chess game passes through distinct stages, from opening to endgame. To succeed at chess, you must plan in both the short and long term. Finally, chess, like life, is a mystery: there are four hundred ways for white to play the first move and black to respond, and from there the possibilities branch out to form a tree whose scale is far beyond our comprehension–there are more ways for a chess game to go than there are atoms in the universe. A chess game is a microcosm oflife, decades of joy and tragedy condensed into a few hours.
+                    Perhaps the attraction is that, if chess is a version of life, it is only an idealized, simplified one, where everyone starts equal, the rules are known, and you really can see things in black and white. Chess is simple enough that computers can be programmed to play itwell. This is because the decisions in chess can be made using only logic; in contrast, life decisions rely much more on emotion. While you can decide to attack on the kingside through analytical thinking, it is impossible to determine analytically whether you are in love. The second major difference is that chess, unlike life, is completely individual; players must confront their difficulties without any assistance, and the only human they interact with–their opponent–is trying to destroy them. It would be impossible to withdraw into yourself and live a happy life without speaking to another person; butin a chess game, people sit in silence for hours, struggling to overcome their problems alone.
+                   </p>
+               </div>
+
+               <div class="signature text flex-justify-end">
+                   <span>-Sami H. (:</span>
+               </div>
+           </div>
+
+           <div class="comments-section">
+               <div class="comments">
+                   <div class="text flex-justify-between">
+                       <h2>Comments:</h2>
+                       <div class="comment-dropdown flex-justify-evenly">
+                          <select name="limit" id="comment-limit" onchange="getComments()">
+                              <option value="5">5</option>
+                              <option value="10">10</option>
+                              <option value="25">25</option>
+                              <option value="null" selected>All</option>
+                          </select>
+                          <select name="language" id="comment-language" onchange="getComments()">
+                              <option value="ch">Chinese</option>
+                              <option value="fr">French</option>
+                              <option value="sp">Spanish</option>
+                              <option value="ru">Russian</option>
+                              <option value="en" selected>English</option>
+                          </select>
+                       </div>
+                   </div>
+                   <div id="comments-container" class="flex-col flex-justify-evenly"></div>
+               </div>
+               <div class="submit">
+                   <div class="form-title text">
+                      <h3>Leave  a comment!</h3>
+                   </div>
+                   <form action="/add-comment" method="POST" class="user-input flex-colrev flex-justify-evenly">
+                       <input type="submit" class="text"/>
+                       <input type="hidden" id="form-blog-title" name="blog-title" value=""/>
+                       <input type="hidden" id="page-name" name="page-name" value="chess.html"/>
+                       <textarea name="user-input" class="open-sans"></textarea>
+                   </form>
+               </div>
+           </div>
+       </div>
+  </body>
+</html>
+
+
+<!--
+TODOS:
+
+
+-->

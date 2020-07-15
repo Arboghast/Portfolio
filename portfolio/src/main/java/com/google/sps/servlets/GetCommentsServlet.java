@@ -24,6 +24,9 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateOptions;
+import com.google.cloud.translate.Translation;
 import com.google.gson.Gson;
 import com.google.sps.data.Comment;
 import java.io.IOException;
@@ -38,8 +41,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/get-comments")
 public class GetCommentsServlet extends HttpServlet {
 
-  
-  
   /** 
    *   Obtain the users preferred comment limit from the query string and builds a FetchOption to
    * recieve that specific number of comments from the datastore.  
@@ -68,6 +69,8 @@ public class GetCommentsServlet extends HttpServlet {
     Query query = new Query("Comment").setFilter(blogFilter)
         .addSort("timestamp", SortDirection.DESCENDING);
 
+    String language = request.getParameter("language");
+
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
 
@@ -76,10 +79,14 @@ public class GetCommentsServlet extends HttpServlet {
     List<Comment> comments = new ArrayList<>();
     for (Entity entity : results.asIterable(queryLimit)) {
       long id = entity.getKey().getId();
-      String message = (String) entity.getProperty("message");
+      String message =(String) entity.getProperty("message");
+      if(!language.equals("en")) {
+        message = translateComment(language,message);
+      }
       long timestamp = (long) entity.getProperty("timestamp");
+      double score = (double) entity.getProperty("score");
 
-      Comment comment = new Comment(id, message, timestamp);
+      Comment comment = new Comment(id, message, timestamp, score);
       comments.add(comment);
     }
 
@@ -101,6 +108,13 @@ public class GetCommentsServlet extends HttpServlet {
       return Integer.valueOf(param);
     }
     return defaultValue;
+  }
+
+  public String translateComment(String languageCode, String comment) {
+    Translate translate = TranslateOptions.getDefaultInstance().getService();
+    Translate.TranslateOption newLanguage = Translate.TranslateOption.targetLanguage(languageCode);
+    String translatedText = translate.translate(comment, newLanguage).getTranslatedText();
+    return translatedText;
   }
 
 }
