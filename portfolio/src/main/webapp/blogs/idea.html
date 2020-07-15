@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideas</title>
+
+    <!--Import CSS and Google fonts-->
+    <link rel="stylesheet" href="../css/blog.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="../css/shared.css">
+
+    <script src="../js/comments.js"></script>
+  </head>
+  <body onload="getComments();updateForm()">
+       <div id="article" class="flex-col">
+
+           <div class="header flex-col flex-center">
+               <div class="title text flex-justify-center">
+                 <h1 id="blog-title">The Potential of an Idea</h1>
+               </div>
+               <div class="image">
+                 <img src="../images/blog-pics/virus.jpg" alt="Image of a Virus"/>
+               </div>
+               <div class="date text flex-justify-start">
+                 <h3>Published: 07/13/2020</h3>
+               </div>
+           </div>
+
+           <div class="content">
+               <div class="para">
+                   <p>I recently watched Parasite and was blown away by the acting quality and storytelling. It lived up to its hype and then some.
+                    If you haven't seen it already, I highly reccomend it. After the movie, my roommates and I discussed interesting bits and the 
+                    rock metaphor kept coming back. The general consensus seemed to be that the rock represented an idea. Whether that idea was greed, 
+                    wealth, power, etc.. was up for debate. But that explanation just felt unsatisfying, rather incomplete. After a long night of 
+                    pondering, I settled on a satisfactory explanation. The rock actually is a a double metaphor, for lack of a better term. Yes the 
+                    rock itself represents an idea of sorts, but, I would argue that it also has a hidden behavioral metaphor. Througout the movie, 
+                    the rock shows parasitic tendencies, from the initial transmission, to the clingy nature, and eventually asa weapoon. This theory 
+                    also explains the title of the movie so thats a plus.
+                   </p>
+                   <p>The idea of simple ideas having profound effect on ones life is not new, but rather hard to pull off. Inception is the latest 
+                    movie that was able to do so, and it came out in 2010. The simple twist of the top ultimately lead to his wife's and subsequently 
+                    his demise aswell. 
+                   </p>
+                   <p>"An idea is like a virus, resillient, highly contagious. Once an idea has taken hold of the brain it's almost impossible to 
+                    erradicate. An idea that is fully formed - fully understood - that sticks, right in there somewhere." -Cobb
+                   </p>
+                   <p>This also reminds me of a famous metroidvania called Hollow Knight. If you've never heard of it and like adventure type games 
+                    I also reccomend you check it out. Without revelaing too much of the plot, a child was born and raised to save the kingdom from
+                    an infectious plague. The child had to be mindless, thoughtless, free of conciousness, in order to contain the plague within itself.
+                    It failed. Although it tried its hardest, an idea instilled within him and prevented him from being truly hollow. With his shortcomming
+                    the kingdom was overrun with the infection and slowly withers away.
+                   </p>
+                   <p>An idea by itself is not meaningful, but rather also dependent on the interpreter of that idea. Each of these three ideas, if aquired 
+                    by another could have no effect on their life. What i'm trying to say is that each of the charecters in these 3 stories had the 
+                    opportunity to recieve the idea and were in the perfect conditions for that idea to take hold and infest their minds. 
+                   </p>
+                    <p>Although the potential of a virus is not always bad. As we saw at the end of Parastie, a new idea taking hold, one that does not lead
+                    to demise, rather sucess. Not all parasites are malicious, rather some even beneficial and aid in good health. With that said, the relationships
+                    between an idea and a reciever is symbiotic, like a parasite. Whether for better or for worse depends you.
+                   </p>
+               </div>
+               <div class="signature text flex-justify-end">
+                   <span>-Sami H. (:</span>
+               </div>
+           </div>
+
+           <div class="comments-section">
+               <div class="comments">
+                   <div class="text flex-justify-between">
+                       <h2>Comments:</h2>
+                       <div class="comment-dropdown flex-justify-evenly">
+                          <select name="limit" id="comment-limit" onchange="getComments()">
+                              <option value="5">5</option>
+                              <option value="10">10</option>
+                              <option value="25">25</option>
+                              <option value="null" selected>All</option>
+                          </select>
+                          <select name="language" id="comment-language" onchange="getComments()">
+                              <option value="ch">Chinese</option>
+                              <option value="fr">French</option>
+                              <option value="sp">Spanish</option>
+                              <option value="ru">Russian</option>
+                              <option value="en" selected>English</option>
+                          </select>
+                       </div>
+                   </div>
+                   <div id="comments-container" class="flex-col flex-justify-evenly"></div>
+               </div>
+               <div class="submit">
+                   <div class="form-title text">
+                      <h3>Leave  a comment!</h3>
+                   </div>
+                   <form action="/add-comment" method="POST" class="user-input flex-colrev flex-justify-evenly">
+                       <input type="submit" class="text"/>
+                       <input type="hidden" id="page-name" name="page-name" value="idea.html"/>
+                       <input type="hidden" id="form-blog-title" name="blog-title" value=""/>
+                       <textarea name="user-input"></textarea>
+                   </form>
+               </div>
+           </div>
+       </div>
+  </body>
+</html>
+
+
+<!--
+TODOS:
+
+
+-->

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Server that returns a random quote when pinged */
+/** Server that returns a random quote when pinged. */
 @WebServlet("/random-quote")
 public class QuotesServlet extends HttpServlet {
 
@@ -39,6 +39,9 @@ public class QuotesServlet extends HttpServlet {
     quotes.add("There’s no better way to overpower a trickle of doubt than with a flood of naked truth"); //?
   }
 
+  /**
+   * Chooses a random quote from the hard-coded quotes ArrayList and sends it to the client.
+   */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
