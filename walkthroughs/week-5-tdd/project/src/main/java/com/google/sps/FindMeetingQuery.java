@@ -21,7 +21,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 public final class FindMeetingQuery {
-  public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) { //Was able to get the runtime down from .430 secs to .156 secs by condensing the logic, removing unnecessary loops
+  public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) { //Was able to get the runtime down from ~4.5 secs to ~2.8 secs by removing unnecessary loops(condensing the logic), then down to ~2.6 secs by simplifying conditionals
     long meetingDuration = request.getDuration();
     if(meetingDuration > 24*60)
     {
@@ -57,15 +57,18 @@ public final class FindMeetingQuery {
             TimeRange timeAfter = TimeRange.fromStartEnd(eventTime.end(),valid.end(),false);
             TimeRange updateRange;
             if(valid.contains(eventTime)){          //event is a subset of a valid time, which means we have to divide the valid time into two chunks
+
                 validTimes.remove(valid);
-                if(timeBefore.duration() != 0 && meetingDuration <= timeBefore.duration()){
+                if(meetingDuration <= timeBefore.duration()){
                     validTimes.add(timeBefore);
                 }
-                if(timeAfter.duration() != 0 && meetingDuration <= timeAfter.duration()){
+                if(meetingDuration <= timeAfter.duration()){
                     validTimes.add(timeAfter);
                 }
                 break;
+
             } else if(valid.overlaps(eventTime)){       //event overlaps with a valid time, must alter the range of that valid time
+
                 if(valid.contains(eventTime.start()))
                 {
                     updateRange = timeBefore;
@@ -75,7 +78,7 @@ public final class FindMeetingQuery {
                 }
 
                 validTimes.remove(valid);
-                if(updateRange.duration() != 0 && meetingDuration <= updateRange.duration())
+                if(meetingDuration <= updateRange.duration())
                 {
                     validTimes.add(updateRange);
                 }
