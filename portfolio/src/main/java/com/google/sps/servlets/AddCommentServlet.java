@@ -40,12 +40,12 @@ public class AddCommentServlet extends HttpServlet {
     long timestamp = System.currentTimeMillis();
     String blogTitle = request.getParameter("blog-title");
 
-    // Document doc =
-    //     Document.newBuilder().setContent(userInput).setType(Document.Type.PLAIN_TEXT).build();
-    // LanguageServiceClient languageService = LanguageServiceClient.create();
-    // Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
-    // float score = sentiment.getScore();
-    // languageService.close();
+    Document doc =
+        Document.newBuilder().setContent(userInput).setType(Document.Type.PLAIN_TEXT).build();
+    LanguageServiceClient languageService = LanguageServiceClient.create();
+    Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
+    float score = sentiment.getScore();
+    languageService.close();
     double score = 0.3;
 
     Entity commentEntity = new Entity("Comment");

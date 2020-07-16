@@ -35,9 +35,8 @@ body {
 
 .blog {
   margin: 8vw 5vw 8vw 5vw;
-  padding: 1.75vw;
   border-image: url('../images/vintage-border.png') 12% 12% round;
-  border-width: 90px;
+  border-width: calc(1.5rem + 3vw);
   border-style: solid;
 }
 
