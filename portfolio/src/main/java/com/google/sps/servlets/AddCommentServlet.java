@@ -46,7 +46,6 @@ public class AddCommentServlet extends HttpServlet {
     Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
     float score = sentiment.getScore();
     languageService.close();
-    double score = 0.3;
 
     Entity commentEntity = new Entity("Comment");
     commentEntity.setProperty("message", userInput);
