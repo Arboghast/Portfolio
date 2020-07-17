@@ -116,7 +116,8 @@ public class GetCommentsServlet extends HttpServlet {
   public String translateComment(String languageCode, String comment) {
     Translate translate = TranslateOptions.getDefaultInstance().getService();
     Translate.TranslateOption newLanguage = Translate.TranslateOption.targetLanguage(languageCode);
-    String translatedText = translate.translate(comment, newLanguage).getTranslatedText();
+    Translate.TranslateOption newLanguage2 = newLanguage.sourceLanguage("en");
+    String translatedText = translate.translate(comment, newLanguage2).getTranslatedText();
     return translatedText;
   }
 

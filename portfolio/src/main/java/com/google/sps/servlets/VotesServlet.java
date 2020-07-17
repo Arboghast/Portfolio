@@ -45,9 +45,9 @@ public class VotesServlet extends HttpServlet {
 
     try {
         comment = datastore.get(commentEntityKey);
-        String voteType = request.getParameter("vote-type").toUpperCase();
+        String voteType = request.getParameter("vote-type");
 
-        int count = (int) comment.getProperty(voteType);
+        int count = (int) (long) comment.getProperty(voteType);
         count++;
         comment.setProperty(voteType,count);
 
