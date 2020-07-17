@@ -82,7 +82,7 @@ function getComments() {
       const dislikeImg = document.createElement('img');
       dislikeImg.setAttribute('onclick', "sendVote('dislikes'," + comment.id + ')');
       dislikeImg.setAttribute('src', "../images/emotions/thumb-down.svg");
-      likeImg.setAttribute('style', "cursor: pointer");
+      dislikeImg.setAttribute('style', "cursor: pointer");
       thumbsDiv.appendChild(dislikeImg);
       bottomDiv.appendChild(thumbsDiv);
 
