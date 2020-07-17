@@ -69,22 +69,24 @@ function getComments() {
       bottomDiv.setAttribute('class','bottom-div flex-row');
 
       const thumbsDiv = document.createElement('div');
-      thumbsDiv.setAttribute('class','thumbs-div flex-row')  
+      thumbsDiv.setAttribute('class','thumbs-div flex-row');
       const likeImg = document.createElement('img');
-      likeImg.setAttribute('onclick', 'addLike(' + this + ')');
-      likeImg.setAttribute('src', "../images/emotions/thumb-up.svg")
+      likeImg.setAttribute('onclick', "sendVote('likes'," + comment.id + ')');
+      likeImg.setAttribute('src', "../images/emotions/thumb-up.svg");
+      likeImg.setAttribute('style', "cursor: pointer");
       thumbsDiv.appendChild(likeImg);
 
-      const likeVal = document.createTextNode('0');
+      const likeVal = document.createTextNode(comment.likes);
       thumbsDiv.appendChild(likeVal);
 
       const dislikeImg = document.createElement('img');
-      dislikeImg.setAttribute('onclick', 'addDislike(' + this + ')');
-      dislikeImg.setAttribute('src', "../images/emotions/thumb-down.svg")
+      dislikeImg.setAttribute('onclick', "sendVote('dislikes'," + comment.id + ')');
+      dislikeImg.setAttribute('src', "../images/emotions/thumb-down.svg");
+      dislikeImg.setAttribute('style', "cursor: pointer");
       thumbsDiv.appendChild(dislikeImg);
       bottomDiv.appendChild(thumbsDiv);
 
-      const dislikeVal = document.createTextNode('0');
+      const dislikeVal = document.createTextNode(comment.dislikes);
       thumbsDiv.appendChild(dislikeVal);
 
       const deleteButton = document.createElement('button');

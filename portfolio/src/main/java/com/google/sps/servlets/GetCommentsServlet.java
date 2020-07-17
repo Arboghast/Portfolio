@@ -86,7 +86,10 @@ public class GetCommentsServlet extends HttpServlet {
       long timestamp = (long) entity.getProperty("timestamp");
       double score = (double) entity.getProperty("score");
 
-      Comment comment = new Comment(id, message, timestamp, score);
+      int likes = (int) (long) entity.getProperty("likes");
+      int dislikes = (int) (long) entity.getProperty("dislikes");
+
+      Comment comment = new Comment(id, message, timestamp, score, likes, dislikes);
       comments.add(comment);
     }
 

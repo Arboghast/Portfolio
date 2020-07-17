@@ -185,7 +185,7 @@ select {
 }
 
 .message-div img{
-    width: calc(5rem + 1vw);
+    width: calc(3rem + 2.5vw);
 }
 
 .thumbs-div{
@@ -195,7 +195,7 @@ select {
 }
 
 .thumbs-div img{
-    width: calc(3rem + 1vw);
+    width: calc(1rem + 3vw);
 }
 
 .bottom-div{

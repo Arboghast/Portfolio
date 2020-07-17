@@ -47,9 +47,28 @@ public class VotesServlet extends HttpServlet {
         comment = datastore.get(commentEntityKey);
         String voteType = request.getParameter("vote-type");
 
-        int count = (int) comment.getProperty(voteType);
+        int count = (int) (long) comment.getProperty(voteType);
         count++;
-        comment.setProperty(voteType,count);
+        
+        Entity commentEntity = new Entity("Comment");
+        commentEntity.setProperty("message", (String) comment.getProperty("message"));
+        commentEntity.setProperty("timestamp", (long) comment.getProperty("timestamp"));
+        commentEntity.setProperty("blogTitle", (String) comment.getProperty("blogTitle"));
+        commentEntity.setProperty("score", (double) comment.getProperty("score"));
+
+        int likes, dislikes;
+        if(voteType.equals("likes")){
+            likes = count;
+            dislikes = (int) (long) comment.getProperty("dislikes");
+        }else{
+            likes = (int) (long) comment.getProperty("likes");
+            dislikes= count;
+        }
+        commentEntity.setProperty("likes", likes);
+        commentEntity.setProperty("dislikes", dislikes);
+
+        datastore.delete(commentEntityKey);
+        datastore.put(commentEntity);
 
         String page = "/blogs/" + request.getParameter("page-name");
         response.sendRedirect(page);
