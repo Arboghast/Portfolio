@@ -97,7 +97,7 @@ p::first-letter {
   width: 100%;
   box-sizing: border-box;
   border: 2px ridge blue;
-  height: calc(3rem + 7vw);
+  min-height: calc(3rem + 7vw);
   border-radius: 10px;
   resize: none;
   font-size: calc(.5rem + 1.5vw);
@@ -111,7 +111,7 @@ p::first-letter {
   padding: calc(.1rem + .25vw);
   border: 2px solid black;
   width: calc(.75rem + 7vw);
-  height: 6vw;
+  min-height: 6vw;
   font-size: calc(.2rem + 1.25vw);
   align-self: flex-end;
   margin: 1vw 0 0 0;
