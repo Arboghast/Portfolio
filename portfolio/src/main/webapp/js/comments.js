@@ -84,7 +84,7 @@ function getComments() {
       thumbsDiv.appendChild(dislikeImg);
       bottomDiv.appendChild(thumbsDiv);
 
-      const dislikeVal = document.createTextNode(comment.dislike);
+      const dislikeVal = document.createTextNode(comment.dislikes);
       thumbsDiv.appendChild(dislikeVal);
 
       const deleteButton = document.createElement('button');
