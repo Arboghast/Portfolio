@@ -11,10 +11,16 @@ body {
   display: block;
 }
 
+.title{
+    display: flex;
+    height: 100vh;
+}
+
 .title h1 {
   font-size: calc(8rem + 6vw);
   color: steelblue;
   border-color: teal;
+  display: inline-table;
 }
 
 #umbrella {
@@ -35,9 +41,8 @@ body {
 
 .blog {
   margin: 8vw 5vw 8vw 5vw;
-  padding: 1.75vw;
   border-image: url('../images/vintage-border.png') 12% 12% round;
-  border-width: 90px;
+  border-width: calc(1.5rem + 3vw);
   border-style: solid;
 }
 
@@ -55,6 +60,10 @@ body {
   text-align: center;
 }
 
+.summary p{
+  overflow-wrap: anywhere;
+}
+
 .footer {
   display: inline-block;
   margin-top: 1.75%;
@@ -64,6 +73,7 @@ body {
 .blog-title {
   font-size: calc(1.5rem + 1.5vw);
   margin-bottom: 2vw;
+  text-align: center;
 }
 
 .double-border {
@@ -72,14 +82,13 @@ body {
 
 .blogpage-link {
   position: absolute;
-  width: 15vw;
-  height: auto;
   top: 0;
-  left: 85%;
+  right: 0;
   color: steelblue;
-  font-size: calc(.5rem + 3vw);
+  font-size: calc(1.5rem + 3vw);
   border-bottom: 3px double teal;
   border-left: 3px double teal;
+  text-align: center;
 }
 
 a {

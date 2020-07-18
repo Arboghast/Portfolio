@@ -1,0 +1,8 @@
+indexes:
+- kind: Comment
+  ancestor: no
+  properties:
+  - name: blogTitle
+    direction: asc
+  - name: timestamp
+    direction: desc

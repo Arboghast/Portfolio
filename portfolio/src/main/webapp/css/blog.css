@@ -4,11 +4,11 @@ body {
   border: 20px double saddlebrown;
   border-image: url('../images/wood-frame.jpg') 8% 8% round;
   border-style: solid;
-  border-width: 90px;
+  border-width: calc(1.5rem + 3vw);
 }
 
 #article {
-  border: 30px inset antiquewhite;
+  border: calc(.5rem + 2vw) inset antiquewhite;
 }
 
 .title {
@@ -17,11 +17,12 @@ body {
 }
 
 #blog-title {
-  font-size: calc(3rem + 1.25vw);
+  font-size: calc(1.75rem + 1.75vw);
+  text-align: center;
 }
 
 .header {
-  padding: 0 3vw 0 3vw;
+  padding: 0 calc(.5rem + 2.5vw) 0 calc(.5rem + 2.5vw);
 }
 
 .text {
@@ -29,7 +30,7 @@ body {
 }
 
 .image {
-  height: 66vh;
+  height: 66vw;
   border: 10px groove saddlebrown;
   width: 100%;
 }
@@ -41,17 +42,18 @@ body {
 }
 
 .date {
-  font-size: calc(1rem + .5vw);
+  font-size: calc(.5rem + .5vw);
   width: 100%;
   margin-top: 2vw;
 }
 
 .para {
-  font-size: calc(1rem + 1vw);
+  font-size: calc(.5rem + 1.5vw);
+  padding: 0 calc(.25rem + 1vw) 0 calc(.25rem + 1vw);
 }
 
 p::first-line {
-  text-indent: calc(3rem + 2.75vw);
+  text-indent: calc(1.25rem + 2.75vw);
 }
 
 p::first-letter {
@@ -60,7 +62,7 @@ p::first-letter {
 
 .signature {
   padding-right: 5%;
-  font-size: calc(2rem + 1vw);
+  font-size: calc(1rem + 1vw);
   margin-bottom: 4vh;
 }
 
@@ -86,8 +88,8 @@ p::first-letter {
   padding-left: 1vw;
 }
 
-.form-title {
-  font-size: calc(.25rem + 1vw);
+.form-title h3{
+  font-size: calc(.5rem + 1vw);
   margin-bottom: 0;
 }
 
@@ -95,12 +97,12 @@ p::first-letter {
   width: 100%;
   box-sizing: border-box;
   border: 2px ridge blue;
-  height: 10vh;
+  min-height: calc(3rem + 7vw);
   border-radius: 10px;
   resize: none;
-  font-size: calc(1.5rem + .5vw);
+  font-size: calc(.5rem + 1.5vw);
   word-wrap: break-word;
-  padding: 1vh .5vw 1vh .5vw;
+  padding: .5vw;
 }
 
 .user-input input {
@@ -108,8 +110,8 @@ p::first-letter {
   border-radius: 10px;
   padding: calc(.1rem + .25vw);
   border: 2px solid black;
-  width: 7vw;
-  height: 7vh;
+  width: calc(.75rem + 7vw);
+  min-height: 6vw;
   font-size: calc(.2rem + 1.25vw);
   align-self: flex-end;
   margin: 1vw 0 0 0;
@@ -130,8 +132,9 @@ form {
 }
 
 select {
+  height: fit-content;
   padding: 1vw;
-  font-size: 34px;
+  font-size: calc(.5rem + 1vw);
   font-family: 'Open Sans', serif;
   margin: 1vw .5vw 1vw .5vw;
   -moz-appearance: none;
@@ -182,7 +185,7 @@ select {
 }
 
 .message-div img{
-    width: calc(5rem + 1vw);
+    width: calc(3rem + 2.5vw);
 }
 
 .thumbs-div{
@@ -192,7 +195,7 @@ select {
 }
 
 .thumbs-div img{
-    width: calc(3rem + 1vw);
+    width: calc(1rem + 3vw);
 }
 
 .bottom-div{

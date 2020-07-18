@@ -27,12 +27,12 @@ public final class Comment {
   /**
    * Object used to convert datastore data to json data.
    */
-  public Comment(long id, String message, long timestamp, double score) {
+   public Comment(long id, String message, long timestamp, double score, int likes, int dislikes) {
     this.id = id;
     this.message = message;
     this.timestamp = timestamp;
     this.score = score;
-    this.likes = 0;
-    this.dislikes = 0;
+    this.likes = likes;
+    this.dislikes = dislikes;
   }
 }

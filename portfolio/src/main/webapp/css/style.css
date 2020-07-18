@@ -9,7 +9,7 @@ body {
 }
 
 .text {
-  font-size: 2em;
+  font-size: calc(1rem + 1.5vw);
   font-family: 'Open Sans', serif;
   text-align: center;
 }
@@ -20,30 +20,30 @@ body {
 }
 
 .landing-section {
-  height: auto;
+  height: 100vh;
+  justify-content: space-evenly;
 }
 
 .blogpage-link {
   position: absolute;
-  width: 15vw;
-  height: auto;
   top: 0;
-  left: 0%;
+  left: 0;
   color: white;
-  font-size: calc(.5rem + 3vw);
+  font-size: calc(1.5rem + 3vw);
   border-bottom: 3px solid black;
   border-right: 3px solid black;
 }
 
 #title {
   font-family: 'pixelnew', serif;
-  font-size: calc(1.5rem + 2.5vw);
+  font-size: calc(2rem + 2.5vw);
   display: block;
-  margin-top: calc(2.5rem + 1.5vw);
+  margin-top: calc(3.5rem + 1.5vw);
+  text-align: center;
 }
 
 .social-icons {
-  width: 40%;
+  width: calc(7rem + 40vw);
 }
 
 .social-icons a {
@@ -55,9 +55,8 @@ body {
 }
 
 #biography {
-  padding: 0 12% 0 12%;
+  padding: 0 4% calc(1.85rem + 1.5vw); 4%;
   font-size: calc(1.25rem + 1.5vw);
-  padding-bottom: calc(1.85rem + 1.5vw);
 }
 
 .transition-bar {
@@ -71,8 +70,8 @@ body {
 }
 
 .subtitle {
-  padding: 15vh 0 15vh 0;
-  font-size: 6rem;
+  padding: 12vh 0 18vh 0;
+  font-size: calc(3.25rem + 4vw);
 }
 
 .train-bar {
@@ -96,7 +95,6 @@ body {
 .proj-intro {
   flex-basis: 50vw;
   display: flex;
-  font-size: 3.4rem;
 }
 
 .proj-intro div img {
@@ -105,37 +103,18 @@ body {
 }
 
 .verticle-bar {
-  position: absolute;
   background: blue;
-  width: calc(3rem + 3.5vw);
-  height: 100%;
-  top: 0;
   z-index: 1;
+  order: 2;
 }
 
 .proj-description {
-  padding: 1.5vh 0 1.5vh 0;
   line-height: calc(2.25rem + 1vw);
 }
 
-.proj:nth-child(odd) .proj-intro {
-  order: 1;
-}
 
-.proj:nth-child(odd) .verticle-bar {
-  transform: skew(-15deg);
-  left: 44%;
-}
 
-.proj:nth-child(even) .proj-intro {
-  order: 3;
-}
-
-.proj:nth-child(even) .verticle-bar {
-  transform: skew(15deg);
-  left: 47%;
-}
-
+/* Code for small screen displays */
 @media only screen and (max-width: 900px) {
   .proj {
     display: flex;
@@ -143,7 +122,9 @@ body {
   }
 
   .verticle-bar {
-    visibility: hidden;
+    height: calc(1rem + 6vw);
+    position: static;
+    transform: skew(0deg);
   }
 
   .proj a {
@@ -152,15 +133,18 @@ body {
 
   .proj-description {
     flex-basis: auto;
+    order: 3;
+    padding: 1.5vw 0 1.5vw 0;
   }
 
-  .proj:nth-child .proj-description {
-    order: 3;
-    padding-left: calc(1rem + 2.75vw);
-    padding-right: calc(1rem + 2.75vw);
+  .proj-intro {
+    order: 1;
   }
+
 }
 
+
+/* Code for Large screen displays */
 @media only screen and (min-width: 900px) {
   .proj {
     display: flex;
@@ -168,7 +152,10 @@ body {
   }
 
   .verticle-bar {
-    visibility: visible;
+    position: absolute;
+    width: calc(3rem + 3.5vw);
+    height: 100%;
+    top: 0;
   }
 
   .proj a {
@@ -179,21 +166,40 @@ body {
     flex-basis: 50vw;
   }
 
+  .proj:nth-child(odd) .proj-description {
+    order: 3;
+    padding-right: calc(1rem + 2vw);
+    padding-left: calc(7rem + 16vw);
+  }
+
+  .proj:nth-child(odd) .proj-intro {
+    order: 1;
+  }
+
+  .proj:nth-child(odd) .verticle-bar {
+    transform: skew(-15deg);
+    left: 44%;
+  }
+
   .proj:nth-child(even) .proj-description {
     order: 1;
     padding-left: calc(1rem + 2.75vw);
     padding-right: calc(10rem + 14vw);
   }
 
-  .proj:nth-child(odd) .proj-description {
+  .proj:nth-child(even) .proj-intro {
     order: 3;
-    padding-right: calc(1rem + 2vw);
-    padding-left: calc(7rem + 16vw);
   }
+
+  .proj:nth-child(even) .verticle-bar {
+    transform: skew(15deg);
+    left: 47%;
+  }
+
 }
 
 #quote {
   font-size: calc(3rem + 2vw);
   background-color: darkblue;
-  margin-top: 4vw;
+  margin-top: calc(2rem + 4vw);
 }
