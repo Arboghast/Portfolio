@@ -11,7 +11,7 @@ body {
   display: block;
 }
 
-.title{
+.title {
     display: flex;
     height: 100vh;
 }
@@ -60,7 +60,7 @@ body {
   text-align: center;
 }
 
-.summary p{
+.summary p {
   overflow-wrap: anywhere;
 }
 

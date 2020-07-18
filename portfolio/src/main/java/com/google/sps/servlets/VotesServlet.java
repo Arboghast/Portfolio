@@ -1,17 +1,3 @@
-// Copyright 2019 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 package com.google.sps.servlets;
 
 import com.google.appengine.api.datastore.DatastoreService;
@@ -26,13 +12,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet */
+/** Servlet that increments the like or dislike count of a comment */
 @WebServlet("/vote-comment")
 public class VotesServlet extends HttpServlet {
 
   /**
    * parameters: Comment ID, Vote Type, page-name
+   * Vote-type: either 'likes' or 'dislikes'
+   *
+   * Datastore does not allow us to modify/update properties of existing objects so
+   * We work around that by creating a new comment object with all the same properties
+   * Except the value we want to increment, which is changed by a factor of +1.
    * 
+   * Old comment object is deleted and its clone is added to the datastore
    */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -67,9 +59,11 @@ public class VotesServlet extends HttpServlet {
         commentEntity.setProperty("likes", likes);
         commentEntity.setProperty("dislikes", dislikes);
 
+        //Deleting old comment object and adding the clone
         datastore.delete(commentEntityKey);
         datastore.put(commentEntity);
 
+        //dynamic redirect
         String page = "/blogs/" + request.getParameter("page-name");
         response.sendRedirect(page);
     } 

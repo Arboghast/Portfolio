@@ -55,7 +55,7 @@ body {
 }
 
 #biography {
-  padding: 0 4% calc(1.85rem + 1.5vw); 4%;
+  padding: 0 4% calc(1.85rem + 1.5vw) 4%;
   font-size: calc(1.25rem + 1.5vw);
 }
 
@@ -113,7 +113,7 @@ body {
 }
 
 
-
+/*Breakpoints below are exclusively for the projects section atm*/
 /* Code for small screen displays */
 @media only screen and (max-width: 900px) {
   .proj {

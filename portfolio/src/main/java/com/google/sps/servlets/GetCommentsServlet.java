@@ -1,17 +1,3 @@
-// Copyright 2019 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 package com.google.sps.servlets;
 
 import static com.google.appengine.api.datastore.Query.FilterOperator.EQUAL;
@@ -37,7 +23,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** returns all blog comments. */
+/** returns blog comments. */
 @WebServlet("/get-comments")
 public class GetCommentsServlet extends HttpServlet {
 
@@ -46,6 +32,8 @@ public class GetCommentsServlet extends HttpServlet {
    * recieve that specific number of comments from the datastore.  
    *   The blog-title unique identifer filters the datastore and returns only comments relevant to 
    * the specified blog-title.
+   *   If a language other than english is requested by the user, we will run the message through the translateMessage() function
+   * and append that as the response instead
    *   Iterate through the datastore response and create an array of Comment objects, which are
    * able to be packed into a json and sent to the client.
    */
@@ -113,6 +101,12 @@ public class GetCommentsServlet extends HttpServlet {
     return defaultValue;
   }
 
+  /**
+   * Inputs are the desired language and the content that we want to translate.
+   * Returns the translated content.
+   *
+   * Uses the Google Translation API. 
+  */
   public String translateComment(String languageCode, String comment) {
     Translate translate = TranslateOptions.getDefaultInstance().getService();
     Translate.TranslateOption newLanguage = Translate.TranslateOption.targetLanguage(languageCode);
