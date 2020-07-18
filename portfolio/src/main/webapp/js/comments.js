@@ -1,16 +1,19 @@
 /**
- * Sends blog-title and user's prefered comment limit to the server
- * to recieve all relevant comments
+ * @param: blog-title, comment limit, language
+ * And returns all datastore comment entries that meet these requirments.
  *
- * Generates comment html using the recieved json and
- * a delete button to remove each comment via id
+ * Generates comment html using the response from the backend by using the createMessage() function
+ *
+ * Uses the GetCommentsServlet
  */
 function getComments() {
     const limitInput = document.getElementById('comment-limit');
     const value = limitInput.options[limitInput.selectedIndex].value;
   
     let blogTitle = document.getElementById('blog-title').innerHTML;
-    blogTitle = blogTitle.split(' ').join('_'); // Clean the url: Generic blog Title -> Generic_blog_title
+
+    //Clean the url: Generic blog Title -> Generic_blog_title
+    blogTitle = blogTitle.split(' ').join('_'); 
     let queryString = '/get-comments?' + 'blog-title=' + blogTitle;
   
     if (value != 'null') {
@@ -21,7 +24,7 @@ function getComments() {
     const language = languageInput.options[languageInput.selectedIndex].value;
     queryString += '&language=' + language;
   
-    //dynamically creating html elements using the response from the getComments api and appending it to the webpage
+    //dynamically create html elements and append it to the webpage.
     fetch(queryString)
         .then((response) => response.json())
         .then((comments) => {
@@ -48,6 +51,14 @@ function getComments() {
         });
   }
   
+  /*
+  * @param: a singluar comment object from the response payload.
+  * Returns an efficiently generated html object
+  *
+  * HTML contains a message section, an img to match the message's sentiment score,
+  * A like and dislike img button and counter for each, and a delete comment button.
+  * These features are contained in certain divs to help style them with flexbox
+  */
   function createMessage(comment){
       const commentsDiv = document.createElement('div');
       commentsDiv.setAttribute('class','comments-div');
@@ -98,6 +109,11 @@ function getComments() {
       return commentsDiv;
   }
   
+  /*
+  * @param: a number from -1.00 to 1.00
+  * Returns an image corresponding to the sentiment score of the message,
+  * which was calculated by the Google Sentiment Analysis API 
+  */
   function scoreToImage(sentimentScore){
     const path = "../images/emotions/";
     let imageUrl = path + "sad.svg";
@@ -113,6 +129,7 @@ function getComments() {
   
     return imageUrl;
   }
+
   /**
    * Adds the blog-title to a hidden form input so user's comments are added to the right blog
    */
@@ -124,7 +141,9 @@ function getComments() {
   /**
    *
    * @param {*} id - the id of the comment to be deleted
-   * and then refetches the comments list
+   * and if sucessful, refetches the comments.
+   *
+   * Uses the DeleteCommentsServlet
    */
   function deleteComment(id) {
     const params = new URLSearchParams();

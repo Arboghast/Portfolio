@@ -1,17 +1,3 @@
-// Copyright 2019 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 package com.google.sps.servlets;
 
 import com.google.appengine.api.datastore.DatastoreService;
@@ -26,13 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet that adds a comment to our datastore when pinged.*/
+/** Servlet that adds a comment to the datastore when pinged.*/
 @WebServlet("/add-comment")
 public class AddCommentServlet extends HttpServlet {
 
   /**
    * Client sends comment data via POST and we create a comment Entity with that information.
-   * We then add it to our datastore and force an update on the clientside via redirect.
+   * We then add it to our datastore and force an update on the clientside via sendRedirect().
    */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -40,6 +26,7 @@ public class AddCommentServlet extends HttpServlet {
     long timestamp = System.currentTimeMillis();
     String blogTitle = request.getParameter("blog-title");
 
+    //Sentiment Analysis API to quantify the emotion of the message. Range: -1.00 <--> 1.00 
     Document doc =
         Document.newBuilder().setContent(userInput).setType(Document.Type.PLAIN_TEXT).build();
     LanguageServiceClient languageService = LanguageServiceClient.create();
@@ -55,9 +42,11 @@ public class AddCommentServlet extends HttpServlet {
     commentEntity.setProperty("likes", 0);
     commentEntity.setProperty("dislikes", 0);
 
+    //.put() adds it to the datastore
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     datastore.put(commentEntity);
 
+    //dynamic redirect
     String page = "/blogs/" + request.getParameter("page-name");
     response.sendRedirect(page);
   }

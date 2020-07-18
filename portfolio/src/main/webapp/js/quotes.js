@@ -1,5 +1,7 @@
 /**
  * Randomly adds one of Sami's favorite quotes to the page
+ *
+ * Uses the QuotesServlet
  */
 function getRandomQuote() {
   fetch('/random-quote')
